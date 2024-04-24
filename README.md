@@ -8,11 +8,15 @@ This is a simple slider package, you can put the position of the indicator and t
 ✔️ The possibility of choosing several effects for the indicator.
 ✔️ Display text for title and body and specify its position.
 ✔️ Select the position of the slider indicator.
-✔️ Download images in blur
+✔️ Download images in blur.
 
 ![20240418_081900](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/e8d7b540-7e35-45b7-880b-1116255b6347)
 
 ![20240418_081732](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/46e38714-27f2-4813-b542-ce0a07062e79)
+
+![20240422_115507](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/a12ed375-8278-43b8-b33a-323be33e801f)
+
+![20240419_094517](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/e3267854-06ff-4b93-b871-d572cda09a4c)
 
 
 
