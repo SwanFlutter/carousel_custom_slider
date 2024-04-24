@@ -175,8 +175,10 @@ class CarouselCustomSlider extends StatefulWidget {
   /// [isdisplayIndicator]: Whether to display the indicator.
   final bool isDisplayIndicator;
 
+  /// [alignmentVerticalPositionIndicator]: The alignment position of the vertical position indicator.
   final AlignmentGeometry alignmentVerticalPositionIndicator;
 
+  /// [paddingVerticalPositionIndicator]: The padding around the vertical position indicator.
   final EdgeInsetsGeometry paddingVerticalPositionIndicator;
   CarouselCustomSlider({
     super.key,
@@ -238,6 +240,7 @@ class CarouselCustomSlider extends StatefulWidget {
     ),
   });
 
+  /// [autoScrollingWheel]: A widget that automatically ListWheel scrolls to the next item in a list at a specified interval.
   static Widget autoScrollingWheel({
     required final List<Widget> children,
     final Duration duration = const Duration(seconds: 3),
@@ -423,8 +426,6 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
     );
   }
 }
-
-
 
 /**Align(
                   alignment: Alignment.centerLeft,
