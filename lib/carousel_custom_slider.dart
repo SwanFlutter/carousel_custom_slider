@@ -180,6 +180,8 @@ class CarouselCustomSlider extends StatefulWidget {
 
   /// [paddingVerticalPositionIndicator]: The padding around the vertical position indicator.
   final EdgeInsetsGeometry paddingVerticalPositionIndicator;
+
+  final BorderRadiusGeometry borderRadius;
   CarouselCustomSlider({
     super.key,
     required this.sliderList,
@@ -224,6 +226,7 @@ class CarouselCustomSlider extends StatefulWidget {
     this.alignmentVerticalPositionIndicator = Alignment.centerLeft,
     this.paddingVerticalPositionIndicator =
         const EdgeInsets.symmetric(horizontal: 15.0),
+    this.borderRadius = BorderRadius.zero,
     this.titleStyle = const TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.bold,
@@ -376,7 +379,7 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
                   vertical: widget.viewportFractionPaddingVertical,
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: widget.borderRadius,
                   child: _pageList[index],
                 ),
               );
