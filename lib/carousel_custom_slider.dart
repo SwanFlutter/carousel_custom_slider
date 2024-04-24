@@ -181,6 +181,8 @@ class CarouselCustomSlider extends StatefulWidget {
   /// [paddingVerticalPositionIndicator]: The padding around the vertical position indicator.
   final EdgeInsetsGeometry paddingVerticalPositionIndicator;
 
+  ///
+  /// [borderRadius]: The border radius of the carousel.
   final BorderRadiusGeometry borderRadius;
   CarouselCustomSlider({
     super.key,
