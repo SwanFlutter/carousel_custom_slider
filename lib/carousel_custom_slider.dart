@@ -3,11 +3,12 @@
 library carousel_custom_slider;
 
 import 'dart:async';
-import 'dart:math';
 
+import 'package:carousel_custom_slider/src/auto_scrolling_wheel.dart';
 import 'package:carousel_custom_slider/src/page_view_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 /// A customizable carousel widget that displays a list of images or other content
@@ -173,6 +174,10 @@ class CarouselCustomSlider extends StatefulWidget {
 
   /// [isdisplayIndicator]: Whether to display the indicator.
   final bool isDisplayIndicator;
+
+  final AlignmentGeometry alignmentVerticalPositionIndicator;
+
+  final EdgeInsetsGeometry paddingVerticalPositionIndicator;
   CarouselCustomSlider({
     super.key,
     required this.sliderList,
@@ -188,7 +193,6 @@ class CarouselCustomSlider extends StatefulWidget {
     this.alignmentPositionIndicator = Alignment.bottomCenter,
     this.alignmentPositionTitleText = Alignment.topLeft,
     this.alignmentPositionBodyText = Alignment.topLeft,
-    this.effect = const SlideEffect(),
     this.onDotClicked,
     this.axisDirectionIndicator = Axis.horizontal,
     this.textDirectionIndicator = TextDirection.ltr,
@@ -215,6 +219,9 @@ class CarouselCustomSlider extends StatefulWidget {
     this.doubleTapZoom = false,
     this.clipBehaviorZoom = false,
     this.fitPic = BoxFit.cover,
+    this.alignmentVerticalPositionIndicator = Alignment.centerLeft,
+    this.paddingVerticalPositionIndicator =
+        const EdgeInsets.symmetric(horizontal: 15.0),
     this.titleStyle = const TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.bold,
@@ -225,7 +232,60 @@ class CarouselCustomSlider extends StatefulWidget {
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
+    this.effect = const SlideEffect(
+      dotHeight: 8,
+      dotWidth: 8,
+    ),
   });
+
+  static Widget autoScrollingWheel({
+    required final List<Widget> children,
+    final Duration duration = const Duration(seconds: 3),
+    final Curve curve = Curves.ease,
+    final List<String>? backgroundImageUrls,
+    final Color? backgroundColor,
+    final double height = 200,
+    final ScrollPhysics? physics,
+    final double diameterRatio = RenderListWheelViewport.defaultDiameterRatio,
+    final double perspective = RenderListWheelViewport.defaultPerspective,
+    final double offAxisFraction = 0.0,
+    final bool useMagnifier = false,
+    final double magnification = 1.0,
+    final double overAndUnderCenterOpacity = 1.0,
+    final double squeeze = 1.0,
+    final ValueChanged<int>? onSelectedItemChanged,
+    final bool renderChildrenOutsideViewport = false,
+    final Clip clipBehavior = Clip.hardEdge,
+    final String? restorationId,
+    final ScrollBehavior? scrollBehavior,
+    final bool autoPlay = true,
+    final Widget Function(BuildContext, Object, StackTrace?)?
+        errorBuilderBackgroundImage,
+  }) {
+    return AutoScrollingWheel(
+      autoPlay: autoPlay,
+      duration: duration,
+      curve: curve,
+      backgroundColor: backgroundColor,
+      backgroundImageUrls: backgroundImageUrls,
+      clipBehavior: clipBehavior,
+      diameterRatio: diameterRatio,
+      height: height,
+      magnification: magnification,
+      offAxisFraction: offAxisFraction,
+      onSelectedItemChanged: onSelectedItemChanged,
+      overAndUnderCenterOpacity: overAndUnderCenterOpacity,
+      perspective: perspective,
+      physics: physics,
+      renderChildrenOutsideViewport: renderChildrenOutsideViewport,
+      restorationId: restorationId,
+      scrollBehavior: scrollBehavior,
+      squeeze: squeeze,
+      useMagnifier: useMagnifier,
+      errorBuilderBackgroundImage: errorBuilderBackgroundImage,
+      children: children,
+    );
+  }
 
   @override
   State<CarouselCustomSlider> createState() => _CarouselCustomSliderState();
@@ -291,10 +351,7 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
     return Container(
       width: widget.width,
       height: widget.height,
-      decoration: BoxDecoration(
-        color: widget.backgroundColor,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
+      color: widget.backgroundColor,
       child: Stack(
         children: [
           PageView.builder(
@@ -315,7 +372,10 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
                   horizontal: widget.viewportFractionPaddingHorizontal,
                   vertical: widget.viewportFractionPaddingVertical,
                 ),
-                child: _pageList[index],
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12.0),
+                  child: _pageList[index],
+                ),
               );
             },
             onPageChanged: (value) {
@@ -326,13 +386,13 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
             reverse: widget.reverse,
             scrollDirection: widget.scrollDirection,
           ),
-          widget.isDisplayIndicator
-              ? Transform.rotate(
-                  angle: widget.isVerticalIndicator ? pi / 360 * 180 : 0,
+          widget.isVerticalIndicator
+              ? Padding(
+                  padding: widget.paddingVerticalPositionIndicator,
                   child: Align(
-                    alignment: widget.alignmentPositionIndicator,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
+                    alignment: widget.alignmentVerticalPositionIndicator,
+                    child: RotatedBox(
+                      quarterTurns: 3,
                       child: SmoothPageIndicator(
                         controller: _pageController,
                         count: widget.sliderList.length,
@@ -344,9 +404,40 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
                     ),
                   ),
                 )
-              : const SizedBox.shrink(),
+              : Align(
+                  alignment: widget.alignmentPositionIndicator,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: SmoothPageIndicator(
+                      controller: _pageController,
+                      count: widget.sliderList.length,
+                      effect: widget.effect,
+                      axisDirection: widget.axisDirectionIndicator,
+                      textDirection: widget.textDirectionIndicator,
+                      onDotClicked: widget.onDotClicked,
+                    ),
+                  ),
+                )
         ],
       ),
     );
   }
 }
+
+
+
+/**Align(
+                  alignment: Alignment.centerLeft,
+                  child: Transform.rotate(
+                    filterQuality: FilterQuality.medium,
+                    angle: pi / 360 * 180,
+                    child: SmoothPageIndicator(
+                      controller: _pageController,
+                      count: widget.sliderList.length,
+                      effect: widget.effect,
+                      axisDirection: widget.axisDirectionIndicator,
+                      textDirection: widget.textDirectionIndicator,
+                      onDotClicked: widget.onDotClicked,
+                    ),
+                  ),
+                ) */
