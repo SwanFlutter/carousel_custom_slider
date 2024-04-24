@@ -142,6 +142,7 @@ class _AutoScrollingWheelState extends State<AutoScrollingWheel> {
   @override
   void initState() {
     super.initState();
+    _scrollingTimer = Timer(Duration.zero, () {});
 
     _scrollerController = FixedExtentScrollController();
 
@@ -150,7 +151,16 @@ class _AutoScrollingWheelState extends State<AutoScrollingWheel> {
       viewportFraction: 1.0,
     );
 
-    _startScrolling();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scrollerController.hasClients) {
+        _startScrolling();
+      }
+    });
+
+    _scrollerController.addListener(() {
+      final currentIndex = _scrollerController.selectedItem;
+      _pageController.jumpToPage(currentIndex);
+    });
   }
 
   @override
@@ -179,8 +189,8 @@ class _AutoScrollingWheelState extends State<AutoScrollingWheel> {
         );
       });
     } else {
-      // Stop scrolling if autoPlay is disabled
-      _scrollingTimer.cancel();
+      // Initialize a dummy timer when autoPlay is false
+      _scrollingTimer = Timer(Duration.zero, () {});
       _pageController.animateToPage(
         _scrollerController.selectedItem,
         duration: const Duration(seconds: 1),
