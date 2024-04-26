@@ -25,7 +25,7 @@ This is a simple slider package, you can put the position of the indicator and t
 
 ```yaml
 dependencies:
-  carousel: ^0.0.2
+  carousel: ^0.0.3
 ```
 
 ## How to use
