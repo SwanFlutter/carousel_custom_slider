@@ -5,7 +5,7 @@ library carousel_custom_slider;
 import 'dart:async';
 
 import 'package:carousel_custom_slider/src/auto_scrolling_wheel.dart';
-import 'package:carousel_custom_slider/src/page_view_widget.dart';
+import 'package:carousel_custom_slider/src/widget/page_view_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -36,12 +36,6 @@ class CarouselCustomSlider extends StatefulWidget {
   /// [sliderList]: The list of images to display in the carousel.
   final List<String> sliderList;
 
-  /// [sliderTitlePost]: Optional list of titles corresponding to each image.
-  final List<String>? sliderTitlePost;
-
-  /// [sliderBodyPost]: Optional list of body text corresponding to each image.
-  final List<String>? sliderBodyPost;
-
   /// [viewportFraction]: The fraction of the viewport that each item in the carousel occupies.
   final double viewportFraction;
 
@@ -59,18 +53,6 @@ class CarouselCustomSlider extends StatefulWidget {
 
   /// [alignmentPositionIndicator]: The alignment position of the indicator.
   final AlignmentGeometry alignmentPositionIndicator;
-
-  /// [alignmentPositionTitleText]: The alignment position of the title text.
-  final AlignmentGeometry alignmentPositionTitleText;
-
-  /// [alignmentPositionBodyText]: The alignment position of the body text.
-  AlignmentGeometry alignmentPositionBodyText;
-
-  /// [titleStyle]: The style of the title text.
-  final TextStyle titleStyle;
-
-  /// [bodyStyle]: The style of the body text.
-  final TextStyle bodyStyle;
 
   /// [effect]: The effect to apply to the carousel items.
   /// You can use these indicators in the effect.
@@ -142,12 +124,6 @@ class CarouselCustomSlider extends StatefulWidget {
 
   final bool isVerticalIndicator;
 
-  /// [paddingBodyText]: The padding around the body text.
-  final EdgeInsetsGeometry paddingBodyText;
-
-  /// [paddingTitleText]: The padding around the title text.
-  final EdgeInsetsGeometry paddingTitleText;
-
   /// [initialPage]: The initial page of the carousel.
   final int initialPage;
 
@@ -181,14 +157,13 @@ class CarouselCustomSlider extends StatefulWidget {
   /// [paddingVerticalPositionIndicator]: The padding around the vertical position indicator.
   final EdgeInsetsGeometry paddingVerticalPositionIndicator;
 
-  ///
   /// [borderRadius]: The border radius of the carousel.
   final BorderRadiusGeometry borderRadius;
-  CarouselCustomSlider({
+
+  final List<Widget> children;
+  const CarouselCustomSlider({
     super.key,
     required this.sliderList,
-    this.sliderTitlePost,
-    this.sliderBodyPost,
     this.viewportFractionPaddingHorizontal = 0,
     this.viewportFractionPaddingVertical = 0,
     this.height = 350,
@@ -197,8 +172,6 @@ class CarouselCustomSlider extends StatefulWidget {
     this.viewportFraction = 1.0,
     this.scrollDirection = Axis.horizontal,
     this.alignmentPositionIndicator = Alignment.bottomCenter,
-    this.alignmentPositionTitleText = Alignment.topLeft,
-    this.alignmentPositionBodyText = Alignment.topLeft,
     this.onDotClicked,
     this.axisDirectionIndicator = Axis.horizontal,
     this.textDirectionIndicator = TextDirection.ltr,
@@ -214,9 +187,6 @@ class CarouselCustomSlider extends StatefulWidget {
     this.scrollBehavior,
     this.backgroundColor = Colors.white,
     this.isVerticalIndicator = false,
-    this.paddingBodyText =
-        const EdgeInsets.only(top: 70.0, bottom: 70, right: 25.0, left: 25.0),
-    this.paddingTitleText = const EdgeInsets.all(25.0),
     this.initialPage = 0,
     this.autoPlay = true,
     this.autoPlayInterval = const Duration(seconds: 3),
@@ -229,20 +199,11 @@ class CarouselCustomSlider extends StatefulWidget {
     this.paddingVerticalPositionIndicator =
         const EdgeInsets.symmetric(horizontal: 15.0),
     this.borderRadius = BorderRadius.zero,
-    this.titleStyle = const TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-    this.bodyStyle = const TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
     this.effect = const SlideEffect(
       dotHeight: 8,
       dotWidth: 8,
     ),
+    this.children = const [],
   });
 
   /// [autoScrollingWheel]: A widget that automatically ListWheel scrolls to the next item in a list at a specified interval.
@@ -394,13 +355,29 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
             reverse: widget.reverse,
             scrollDirection: widget.scrollDirection,
           ),
-          widget.isVerticalIndicator
-              ? Padding(
-                  padding: widget.paddingVerticalPositionIndicator,
-                  child: Align(
-                    alignment: widget.alignmentVerticalPositionIndicator,
-                    child: RotatedBox(
-                      quarterTurns: 3,
+          if (widget.isDisplayIndicator)
+            widget.isVerticalIndicator
+                ? Padding(
+                    padding: widget.paddingVerticalPositionIndicator,
+                    child: Align(
+                      alignment: widget.alignmentVerticalPositionIndicator,
+                      child: RotatedBox(
+                        quarterTurns: 3,
+                        child: SmoothPageIndicator(
+                          controller: _pageController,
+                          count: widget.sliderList.length,
+                          effect: widget.effect,
+                          axisDirection: widget.axisDirectionIndicator,
+                          textDirection: widget.textDirectionIndicator,
+                          onDotClicked: widget.onDotClicked,
+                        ),
+                      ),
+                    ),
+                  )
+                : Align(
+                    alignment: widget.alignmentPositionIndicator,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
                       child: SmoothPageIndicator(
                         controller: _pageController,
                         count: widget.sliderList.length,
@@ -410,40 +387,11 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
                         onDotClicked: widget.onDotClicked,
                       ),
                     ),
-                  ),
-                )
-              : Align(
-                  alignment: widget.alignmentPositionIndicator,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: SmoothPageIndicator(
-                      controller: _pageController,
-                      count: widget.sliderList.length,
-                      effect: widget.effect,
-                      axisDirection: widget.axisDirectionIndicator,
-                      textDirection: widget.textDirectionIndicator,
-                      onDotClicked: widget.onDotClicked,
-                    ),
-                  ),
-                )
+                  )
+          else
+            const SizedBox.shrink(),
         ],
       ),
     );
   }
 }
-
-/**Align(
-                  alignment: Alignment.centerLeft,
-                  child: Transform.rotate(
-                    filterQuality: FilterQuality.medium,
-                    angle: pi / 360 * 180,
-                    child: SmoothPageIndicator(
-                      controller: _pageController,
-                      count: widget.sliderList.length,
-                      effect: widget.effect,
-                      axisDirection: widget.axisDirectionIndicator,
-                      textDirection: widget.textDirectionIndicator,
-                      onDotClicked: widget.onDotClicked,
-                    ),
-                  ),
-                ) */

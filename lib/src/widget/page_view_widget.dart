@@ -74,30 +74,7 @@ class PageViewWidget extends StatelessWidget {
             },
           ),
         ),
-        if (widget.sliderTitlePost != null)
-          widget.sliderTitlePost != null
-              ? Align(
-                  alignment: widget.alignmentPositionTitleText,
-                  child: Padding(
-                    padding: widget.paddingTitleText,
-                    child: Text(
-                      widget.sliderTitlePost![index],
-                      style: widget.titleStyle,
-                    ),
-                  ),
-                )
-              : const SizedBox(),
-        if (widget.sliderBodyPost != null)
-          Align(
-            alignment: widget.alignmentPositionBodyText,
-            child: Padding(
-              padding: widget.paddingBodyText,
-              child: Text(
-                widget.sliderBodyPost![index],
-                style: widget.bodyStyle,
-              ),
-            ),
-          ),
+        ...widget.children,
       ],
     );
   }
