@@ -93,7 +93,7 @@ CarouselCustomSlider.parallax(
 
 ```yaml
 dependencies:
-  carousel: ^0.0.4
+  carousel_custom_slider: ^0.0.3
 ```
 
 ## How to use
