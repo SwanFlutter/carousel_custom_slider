@@ -4,6 +4,7 @@ library carousel_custom_slider;
 
 import 'dart:async';
 
+import 'package:carousel_custom_slider/src/Parallax.dart';
 import 'package:carousel_custom_slider/src/auto_scrolling_wheel.dart';
 import 'package:carousel_custom_slider/src/widget/page_view_widget.dart';
 import 'package:flutter/gestures.dart';
@@ -252,6 +253,135 @@ class CarouselCustomSlider extends StatefulWidget {
       squeeze: squeeze,
       useMagnifier: useMagnifier,
       errorBuilderBackgroundImage: errorBuilderBackgroundImage,
+      children: children,
+    );
+  }
+
+  static Widget parallax({
+    /// The list of image URLs for the background image of each card.
+    required final List<String> imageUrl,
+
+    /// The elevation of the card, which creates a shadow effect. Defaults to 0.0.
+    final double elevation = 0.0,
+
+    /// The color of the shadow. Defaults to black.
+    final Color? shadowColor = Colors.black,
+
+    /// Determines whether to show the background image on the card. Defaults to true.
+    final bool showBackgroundImage = true,
+
+    /// The background color of the card. Defaults to white.
+    final Color backgroundColor = Colors.white,
+
+    /// The blur value for the background image. Defaults to 10.0.
+    final double sigmaXBlurBackgroundImage = 10.0,
+
+    /// The initial page to be displayed in the card slider. Defaults to 1.
+    final int initialPage = 1,
+
+    /// The fraction of the viewport occupied by each card in the slider. Defaults to 0.5.
+    final double viewportFraction = 0.5,
+
+    /// Callback function when the card is tapped.
+    final void Function()? onTap,
+
+    /// Callback function when the card is double-tapped.
+    final void Function()? onDoubleTap,
+
+    /// Callback function when the card is long-pressed.
+    final void Function()? onLongPress,
+
+    /// The duration of the animation when transitioning between cards. Defaults to 700 microseconds.
+    final Duration duration = const Duration(milliseconds: 700),
+
+    /// The border radius of the card.
+    final BorderRadiusGeometry? borderRadius = BorderRadius.zero,
+
+    /// The border of the card.
+    final BoxBorder? border,
+
+    /// The background color of the card.
+    final Color cardBackgroundColor = Colors.white70,
+
+    /// A builder function to customize the error widget.
+    final Widget Function(BuildContext, Object, StackTrace?)? errorBuilder,
+
+    /// A builder function to customize the frame of the card.
+    final Widget Function(BuildContext, Widget, int?, bool)? frameBuilder,
+
+    /// The height of the cached image.
+    final int? cacheHeight = 1200,
+
+    /// The width of the cached image.
+    final int? cacheWidth = 1200,
+
+    /// The scaling factor for the image value. Defaults to 0.5.
+    final double valueScalingFactor = 0.5,
+
+    /// The dynamic height of the card. Defaults to 400.
+    final int dynamicHeight = 400,
+
+    /// The horizontal transform of the card. Defaults to 250.
+    final int horizontalTransform = 250,
+
+    /// The list of children widgets to be displayed in the card slider.
+    final List<Widget> children = const [],
+
+    /// The title text displayed on the card.
+    final String? title,
+
+    /// The explicit height of the card.
+    final double? height,
+
+    /// The explicit width of the card.
+    final double? width,
+
+    /// The custom curve used for controlling the animation transition in the carousel.
+    ///
+    /// This curve defines the rate of change of an animation over time. The curve
+    /// determines how the animation progresses from its initial state to its final
+    /// state. By providing a custom curve, you can create unique animation effects
+    /// with different rates of change.
+    ///
+    /// The [customCurve] can be any valid [Curve] instance from the Flutter framework,
+    /// such as linear, easeIn, easeOut, cubic, etc.
+    final Curve customCurve = Curves.ease,
+
+    /// The text direction of the displayed widget.
+    final TextDirection directionality = TextDirection.ltr,
+
+    /// The filter quality for widget images.
+    final FilterQuality filterQuality = FilterQuality.low,
+  }) {
+    return Parallax(
+      imageUrl: imageUrl,
+      elevation: elevation,
+      shadowColor: shadowColor,
+      showBackgroundImage: showBackgroundImage,
+      backgroundColor: backgroundColor,
+      sigmaXBlurBackgroundImage: sigmaXBlurBackgroundImage,
+      initialPage: initialPage,
+      viewportFraction: viewportFraction,
+      onTap: onTap,
+      onDoubleTap: onDoubleTap,
+      onLongPress: onLongPress,
+      duration: duration,
+      borderRadius: borderRadius,
+      border: border,
+      cardBackgroundColor: cardBackgroundColor,
+      errorBuilder: errorBuilder,
+      frameBuilder: frameBuilder,
+      cacheHeight: cacheHeight,
+      cacheWidth: cacheWidth,
+      valueScalingFactor: valueScalingFactor,
+      dynamicHeight: dynamicHeight,
+      horizontalTransform: horizontalTransform,
+      title: title,
+      height: height,
+      width: width,
+      customCurve: customCurve,
+      directionality: directionality,
+      filterQuality: filterQuality,
       children: children,
     );
   }

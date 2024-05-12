@@ -18,6 +18,36 @@ This is a simple slider package, you can put the position of the indicator and t
 ![20240419_094517](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/e3267854-06ff-4b93-b871-d572cda09a4c)
 
 
+```dart
+
+CarouselCustomSlider.parallax(
+          imageUrl: sliderListImage,
+          // height: 400,
+          showBackgroundImage: true,
+          borderRadius: BorderRadius.circular(16.0),
+          border: Border.all(color: Colors.white, width: 5.0),
+          customCurve: Curves.easeInOutBack,
+          shadowColor: Colors.pink,
+          horizontalTransform: 250,
+
+          ///You may sometimes get container box error, you need to change [viewportFraction] , [valueScalingFactor] , [horizontalTransform] , [dynamicHeight] value to match with one another,
+          /// most of the time the problem is solved by changing these two [viewportFraction] , [valueScalingFactor] .
+          valueScalingFactor: 0.4,
+          viewportFraction: 0.8,
+          dynamicHeight: 600,
+          children: [
+            const Positioned(
+              left: 25,
+              bottom: 25.0,
+              child: Text(
+                'Parallax',
+                style: TextStyle(color: Colors.white, fontSize: 30.0),
+              ),
+            ),
+          ],
+        ),
+
+```
 
 
 ## Getting started
