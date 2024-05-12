@@ -46,6 +46,9 @@ dotColor: Theme.of(context).colorScheme.inversePrimary,
 ![20240419_094517](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/e3267854-06ff-4b93-b871-d572cda09a4c)
 
 
+![20240512_074358](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/4fe2e438-893a-4fc8-86a0-c7986e4730f3)
+
+
 ```dart
 
 CarouselCustomSlider.parallax(
