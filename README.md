@@ -44,8 +44,15 @@ dotColor: Theme.of(context).colorScheme.inversePrimary,
 
 ![20240422_115507](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/a12ed375-8278-43b8-b33a-323be33e801f)
 
+```dart
+ CarouselCustomSlider.autoScrollingWheel(
+        autoPlay: false,
+        height: 150,
+        backgroundImageUrls: listImage,
+        children: children,
+      ),
 
-
+```
 
 ![20240512_074358](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/4fe2e438-893a-4fc8-86a0-c7986e4730f3)
 
