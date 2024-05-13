@@ -88,7 +88,7 @@ CarouselCustomSlider.parallax(
 
 ```
 ![TransformType skew](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/7a6a6edc-d2f6-43d6-915a-b5629d792a40)
-
+```dart
  CarouselCustomSlider.transFormedCardSlider(
             height: 400,
             transformType: TransformType.skew,
@@ -98,8 +98,19 @@ CarouselCustomSlider.parallax(
             valueScalingFactor: 0.4, //BorderSide.strokeAlignCenter
             viewportFraction: 0.7,
             customCurve: Curves.bounceInOut,
+           children: [
+            const Positioned(
+              left: 25,
+              bottom: 25.0,
+              child: Text(
+                'TransformType.skew',
+                style: TextStyle(color: Colors.white, fontSize: 30.0),
+              ),
+            ),
+          ],
           ),
-
+        
+```
 
 ## Getting started
 
