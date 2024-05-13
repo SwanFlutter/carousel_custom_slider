@@ -4,7 +4,7 @@ library carousel_custom_slider;
 
 import 'dart:async';
 
-import 'package:carousel_custom_slider/src/Parallax.dart';
+import 'package:carousel_custom_slider/src/parallax.dart';
 import 'package:carousel_custom_slider/src/auto_scrolling_wheel.dart';
 import 'package:carousel_custom_slider/src/simple_page_widget.dart';
 import 'package:carousel_custom_slider/src/transformed_card_slider.dart';

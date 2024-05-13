@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:carousel_custom_slider/src/Parallax.dart';
+import 'package:carousel_custom_slider/src/parallax.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardWidget extends StatefulWidget {

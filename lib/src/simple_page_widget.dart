@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:carousel_custom_slider/src/widget/custom_card_simple-widget.dart';
+import 'package:carousel_custom_slider/src/widget/custom_card_simple_widget.dart';
 import 'package:flutter/material.dart';
 
 /// A customizable widget for creating a sliding card with various features such as

@@ -20,10 +20,11 @@ packages:
   carousel_custom_slider:
     dependency: "direct main"
     description:
-      path: "G:\\Android\\Pakege\\carousel_custom_slider"
-      relative: false
-    source: path
-    version: "0.0.3"
+      name: carousel_custom_slider
+      sha256: "802ebefac35b1dc45711f623f4a8718f840d88221ea0b1fff94e3aff775b010e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   characters:
     dependency: transitive
     description:
