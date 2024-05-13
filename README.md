@@ -162,6 +162,33 @@ CarouselCustomSlider.transFormedCardSlider(
 
 ```
 
+![TransformType rotation](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/25bc933c-3fcf-46f0-b657-b7773fb98178)
+
+
+```dart
+
+CarouselCustomSlider.transFormedCardSlider(
+            transformType: TransformType.rotation,
+            imageUrl: sliderListImage,
+             ///You may sometimes get container box error, you need to change [viewportFraction] , [valueScalingFactor] , [horizontalTransform] , [dynamicHeight] value to match with one another,
+          /// most of the time the problem is solved by changing these two [viewportFraction] , [valueScalingFactor] .
+            valueScalingFactor: 0.3, //BorderSide.strokeAlignCenter
+            viewportFraction: 0.7,
+            customCurve: Curves.bounceInOut,
+           children: [
+            const Positioned(
+              left: 25,
+              bottom: 25.0,
+              child: Text(
+                'TransformType.rotation',
+                style: TextStyle(color: Colors.white, fontSize: 30.0),
+              ),
+            ),
+          ],
+          ),
+
+```
+
 
 
 ## Getting started
