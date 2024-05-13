@@ -136,12 +136,39 @@ CarouselCustomSlider.transFormedCardSlider(
 
 ```
 
+![TransformType skew2](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/45c9ecc0-86a0-453b-9fa3-bd7b39cc69e9)
+
+```dart
+
+CarouselCustomSlider.transFormedCardSlider(
+            transformType: TransformType.skew2,
+            imageUrl: sliderListImage,
+             ///You may sometimes get container box error, you need to change [viewportFraction] , [valueScalingFactor] , [horizontalTransform] , [dynamicHeight] value to match with one another,
+          /// most of the time the problem is solved by changing these two [viewportFraction] , [valueScalingFactor] .
+            valueScalingFactor: 0.3, //BorderSide.strokeAlignCenter
+            viewportFraction: 0.7,
+            customCurve: Curves.bounceInOut,
+           children: [
+            const Positioned(
+              left: 25,
+              bottom: 25.0,
+              child: Text(
+                'TransformType.skew2',
+                style: TextStyle(color: Colors.white, fontSize: 30.0),
+              ),
+            ),
+          ],
+          ),
+
+```
+
+
 
 ## Getting started
 
 ```yaml
 dependencies:
-  carousel_custom_slider: ^0.0.3
+  carousel_custom_slider: ^0.0.4
 ```
 
 ## How to use
