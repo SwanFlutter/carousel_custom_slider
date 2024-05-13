@@ -1,5 +1,5 @@
 import 'package:carousel/constant.dart';
-import 'package:carousel/parallax.dart';
+import 'package:carousel/transforom_card.dart';
 import 'package:carousel_custom_slider/carousel_custom_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -122,7 +122,7 @@ class Home extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const Parallax(),
+              builder: (context) => const Transformcard(),
             ),
           );
         },

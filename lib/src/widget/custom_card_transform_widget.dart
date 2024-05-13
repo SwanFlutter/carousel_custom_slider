@@ -1,4 +1,5 @@
 import 'package:carousel_custom_slider/src/transformed_card_slider.dart';
+import 'package:carousel_custom_slider/transform_type.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardTransformWidget extends StatefulWidget {

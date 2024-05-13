@@ -30,7 +30,7 @@ import 'package:flutter/material.dart';
 ///   left: 25,
 ///   bottom: 25.0,
 ///   child: Text(
-///   "Hello",
+///   "Parallax",
 ///   style: TextStyle(color: Colors.white, fontSize: 30.0),
 ///   ),
 ///   )
@@ -107,9 +107,6 @@ class Parallax extends StatefulWidget {
   /// The list of children widgets to be displayed in the card slider.
   final List<Widget> children;
 
-  /// The title text displayed on the card.
-  final String? title;
-
   /// The explicit height of the card.
   final double? height;
 
@@ -147,7 +144,6 @@ class Parallax extends StatefulWidget {
     this.onLongPress,
     this.duration = const Duration(microseconds: 700),
     this.borderRadius = BorderRadius.zero,
-    this.title,
     this.height,
     this.width,
     this.border,

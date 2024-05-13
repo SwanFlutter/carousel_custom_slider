@@ -106,12 +106,6 @@ class SimplePageWidget extends StatefulWidget {
   /// The list of children widgets to be displayed in the card slider.
   final List<Widget> children;
 
-  /// The title text displayed on the card.
-  final String? title;
-
-  /// The description text displayed on the card.
-  final String? description;
-
   /// The explicit height of the card.
   final double? height;
 
@@ -146,18 +140,16 @@ class SimplePageWidget extends StatefulWidget {
     this.backgroundColor = Colors.white,
     this.sigmaXBlurBackgroundImage = 10.0,
     this.initialPage = 1,
-    this.viewportFraction = 0.5,
+    this.viewportFraction = 0.7,
     this.onTap,
     this.onDoubleTap,
     this.onLongPress,
     this.duration = const Duration(microseconds: 700),
     this.borderRadius = BorderRadius.zero,
-    this.title,
-    this.description,
     this.height,
     this.width,
     this.border,
-    this.cardBackgroundColor = Colors.grey,
+    this.cardBackgroundColor = Colors.white70,
     this.errorBuilder,
     this.frameBuilder,
     this.cacheHeight = 1200,

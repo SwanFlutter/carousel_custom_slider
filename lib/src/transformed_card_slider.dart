@@ -1,17 +1,40 @@
 import 'dart:ui';
 
 import 'package:carousel_custom_slider/src/widget/custom_card_transform_widget.dart';
+import 'package:carousel_custom_slider/transform_type.dart';
 import 'package:flutter/material.dart';
 
-enum TransformType {
-  skew,
-  skew1,
-  skew2,
-  rotation,
-  tryInvert,
-  diagonal3Values,
-  identity
-}
+///Example:
+///
+/// ```dart
+/// TransformedCardSlider(
+///   transformType: TransformType.skew1,
+///   imageUrl: [
+///     'image1.jpg',
+///     'image2.jpg',
+///     'image3.jpg',
+///   ],
+///   showBackgroundImage: false,
+///   viewportFraction: 0.7,
+///   borderRadius: BorderRadius.circular(16.0),
+///   elevation: 10,
+///   valueScalingFactor: 0.3,
+///   customCurve: Curves.easeInOutBack,
+///   shadowColor: Colors.pink,
+///   dynamicHeight: 400,
+///   horizontalTransform: 250,
+///   children: const [
+///   Positioned(
+///   left: 25,
+///   bottom: 25.0,
+///   child: Text(
+///   "transformType: TransformType.skew1",
+///   style: TextStyle(color: Colors.white, fontSize: 30.0),
+///   ),
+///   )
+///   ],
+/// )
+/// ```
 
 class TransformedCardSlider extends StatefulWidget {
   /// The list of image URLs for the background image of each card.
@@ -83,12 +106,6 @@ class TransformedCardSlider extends StatefulWidget {
   /// The list of children widgets to be displayed in the card slider.
   final List<Widget> children;
 
-  /// The title text displayed on the card.
-  final String? title;
-
-  /// The description text displayed on the card.
-  final String? description;
-
   /// The explicit height of the card.
   final double? height;
 
@@ -115,6 +132,7 @@ class TransformedCardSlider extends StatefulWidget {
   /// The fit property of the image widget.
   final BoxFit? fit;
 
+  /// The transform type of the card. Defaults to [TransformType.skew].
   final TransformType transformType;
 
   const TransformedCardSlider({
@@ -126,18 +144,16 @@ class TransformedCardSlider extends StatefulWidget {
     this.backgroundColor = Colors.white,
     this.sigmaXBlurBackgroundImage = 10.0,
     this.initialPage = 1,
-    this.viewportFraction = 0.5,
+    this.viewportFraction = 0.7,
     this.onTap,
     this.onDoubleTap,
     this.onLongPress,
     this.duration = const Duration(microseconds: 700),
     this.borderRadius = BorderRadius.zero,
-    this.title,
-    this.description,
     this.height,
     this.width,
     this.border,
-    this.cardBackgroundColor = Colors.grey,
+    this.cardBackgroundColor = Colors.white70,
     this.errorBuilder,
     this.frameBuilder,
     this.cacheHeight = 1200,
