@@ -189,6 +189,33 @@ CarouselCustomSlider.transFormedCardSlider(
 
 ```
 
+![TransformType tryInvert](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/0b3b2db6-4b17-4707-8de4-8ce08723ead9)
+
+```dart
+
+CarouselCustomSlider.transFormedCardSlider(
+            transformType: TransformType.tryInvert,
+            imageUrl: sliderListImage,
+             ///You may sometimes get container box error, you need to change [viewportFraction] , [valueScalingFactor] , [horizontalTransform] , [dynamicHeight] value to match with one another,
+          /// most of the time the problem is solved by changing these two [viewportFraction] , [valueScalingFactor] .
+            valueScalingFactor: 0.3, //BorderSide.strokeAlignCenter
+            viewportFraction: 0.7,
+            customCurve: Curves.bounceInOut,
+           children: [
+            const Positioned(
+              left: 25,
+              bottom: 25.0,
+              child: Text(
+                'TransformType.tryInvert',
+                style: TextStyle(color: Colors.white, fontSize: 30.0),
+              ),
+            ),
+          ],
+          ),
+
+```
+
+
 
 
 ## Getting started
