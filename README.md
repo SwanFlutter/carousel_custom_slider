@@ -87,6 +87,18 @@ CarouselCustomSlider.parallax(
         ),
 
 ```
+![TransformType skew](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/7a6a6edc-d2f6-43d6-915a-b5629d792a40)
+
+ CarouselCustomSlider.transFormedCardSlider(
+            height: 400,
+            transformType: TransformType.skew,
+            imageUrl: sliderListImage,
+             ///You may sometimes get container box error, you need to change [viewportFraction] , [valueScalingFactor] , [horizontalTransform] , [dynamicHeight] value to match with one another,
+          /// most of the time the problem is solved by changing these two [viewportFraction] , [valueScalingFactor] .
+            valueScalingFactor: 0.4, //BorderSide.strokeAlignCenter
+            viewportFraction: 0.7,
+            customCurve: Curves.bounceInOut,
+          ),
 
 
 ## Getting started
