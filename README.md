@@ -215,6 +215,32 @@ CarouselCustomSlider.transFormedCardSlider(
 
 ```
 
+![TransformType diagonal3Values](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/0ce14c26-7635-499a-9d6a-eeaf09491480)
+
+```dart
+
+CarouselCustomSlider.transFormedCardSlider(
+            transformType: TransformType.diagonal3Values,
+            imageUrl: sliderListImage,
+             ///You may sometimes get container box error, you need to change [viewportFraction] , [valueScalingFactor] , [horizontalTransform] , [dynamicHeight] value to match with one another,
+          /// most of the time the problem is solved by changing these two [viewportFraction] , [valueScalingFactor] .
+            valueScalingFactor: 0.3, //BorderSide.strokeAlignCenter
+            viewportFraction: 0.7,
+            customCurve: Curves.bounceInOut,
+           children: [
+            const Positioned(
+              left: 25,
+              bottom: 25.0,
+              child: Text(
+                'TransformType.diagonal3Values',
+                style: TextStyle(color: Colors.white, fontSize: 30.0),
+              ),
+            ),
+          ],
+          ),
+
+```
+
 
 
 
