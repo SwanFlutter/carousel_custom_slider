@@ -89,6 +89,7 @@ CarouselCustomSlider.parallax(
 ```
 
 
+![identity](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/6b9837ef-b929-4bf8-abc6-aa3fc024588e)
 
 
 ```dart
@@ -102,6 +103,10 @@ CarouselCustomSlider.transformed3DCardlider(
 ```
 
 
+![identity1](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/1ec70529-51b4-4502-9a2a-162c53c02b11)
+
+
+
 ```dart
 
 CarouselCustomSlider.transformed3DCardlider(
@@ -111,6 +116,9 @@ CarouselCustomSlider.transformed3DCardlider(
             ),
 
 ```
+
+![inverted](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/0ce1dd45-914b-411d-bd9c-d69f73efb2b7)
+
 
 
 ```dart
@@ -123,6 +131,9 @@ CarouselCustomSlider.transformed3DCardlider(
 
 ```
 
+![inverted1](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/b476cdda-f7d1-4327-9a86-0926e875792a)
+
+
 
 ```dart
 
@@ -133,6 +144,9 @@ CarouselCustomSlider.transformed3DCardlider(
             ),
 
 ```
+
+![inverted2](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/67026d00-6b81-445d-aaf4-0da2728514f9)
+
 
 
 ```dart
@@ -145,6 +159,7 @@ CarouselCustomSlider.transformed3DCardlider(
 
 ```
 
+![inverted3](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/d12283ed-69a0-4bf8-97cd-6c592bbc79ad)
 
 
 ```dart
@@ -157,6 +172,9 @@ CarouselCustomSlider.transformed3DCardlider(
 
 ```
 
+![inverted4](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/6398467d-48f2-4c3b-a166-6bf933a4413a)
+
+
 
 ```dart
 
@@ -168,6 +186,9 @@ CarouselCustomSlider.transformed3DCardlider(
 
 ```
 
+![rotationY](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/2e00eb8f-12e8-4a73-87dd-a6ed4169877c)
+
+
 
 ```dart
 
@@ -178,6 +199,9 @@ CarouselCustomSlider.transformed3DCardlider(
             ),
 
 ```
+
+![rotationX](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/3a610427-1ee8-471e-9a71-a15af1afb435)
+
 
 
 ```dart
