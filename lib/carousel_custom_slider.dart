@@ -4,9 +4,10 @@ library carousel_custom_slider;
 
 import 'dart:async';
 
-import 'package:carousel_custom_slider/src/parallax.dart';
 import 'package:carousel_custom_slider/src/auto_scrolling_wheel.dart';
+import 'package:carousel_custom_slider/src/parallax.dart';
 import 'package:carousel_custom_slider/src/simple_page_widget.dart';
+import 'package:carousel_custom_slider/src/transformed_3D_card_slider.dart';
 import 'package:carousel_custom_slider/src/transformed_card_slider.dart';
 import 'package:carousel_custom_slider/src/widget/page_view_widget.dart';
 import 'package:carousel_custom_slider/transform_type.dart';
@@ -15,7 +16,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+export 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 export 'transform_type.dart';
+export 'transform_type_3d.dart';
 
 /// A customizable carousel widget that displays a list of images or other content
 /// in a horizontally or vertically scrolling list.
@@ -756,6 +760,125 @@ class CarouselCustomSlider extends StatefulWidget {
       filterQuality: filterQuality,
       fit: fit,
       transformType: transformType,
+      children: children,
+    );
+  }
+
+  ///Example:
+  ///
+  /// ```dart
+  /// transformed3DCardlider(
+  ///   transformType: TransformType.identity,
+  ///   imageUrl: [
+  ///     'image1.jpg',
+  ///     'image2.jpg',
+  ///     'image3.jpg',
+  ///   ],
+  ///   showBackgroundImage: false,
+  ///   viewportFraction: 0.8,
+  ///   borderRadius: BorderRadius.circular(16.0),
+  ///   children: const [
+  ///   Positioned(
+  ///   left: 25,
+  ///   bottom: 25.0,
+  ///   child: Text(
+  ///   "transformType: TransformType.skew1",
+  ///   style: TextStyle(color: Colors.white, fontSize: 30.0),
+  ///   ),
+  ///   )
+  ///   ],
+  /// )
+  /// ```
+
+  static Widget transformed3DCardlider({
+    /// The list of image URLs for the background image of each card.
+    required final List<String> imageUrl,
+
+    /// The text direction of the displayed widget.
+    final TextDirection directionality = TextDirection.ltr,
+
+    /// The initial page to be displayed in the card slider. Defaults to 1.
+    final int initialPage = 1,
+
+    /// The fraction of the viewport occupied by each card in the slider. Defaults to 0.8.
+    final double viewportFraction = 0.8,
+
+    /// The explicit height of the box.
+    final double? height,
+
+    /// The explicit width of the box.
+    final double? width,
+
+    /// The explicit height of the card. Defaults to 400.
+    final double? heightCard = 400,
+
+    /// The explicit width of the card.
+    final double? widthCard,
+
+    /// Callback function when the card is tapped.
+    final void Function()? onTap,
+
+    /// Callback function when the card is double-tapped.
+    final void Function()? onDoubleTap,
+
+    /// Callback function when the card is long-pressed.
+    final void Function()? onLongPress,
+
+    /// The background color of the card.
+    final Color cardBackgroundColor = Colors.white,
+
+    /// A builder function to customize the error widget.
+    final Widget Function(BuildContext, Object, StackTrace?)? errorBuilder,
+
+    /// A builder function to customize the frame of the card.
+    final Widget Function(BuildContext, Widget, int?, bool)? frameBuilder,
+
+    /// The height of the cached image.
+    final int? cacheHeight = 300,
+
+    /// The width of the cached image.
+    final int? cacheWidth = 300,
+
+    /// Determines whether to show the background image on the card. Defaults to true.
+    final bool showBackgroundImage = true,
+
+    /// The blur value for the background image. Defaults to 10.0.
+    final double sigmaXBlurBackgroundImage = 10.0,
+
+    /// The fit property of the image widget.
+    final BoxFit? fit = BoxFit.fitHeight,
+
+    /// The background color of the card. Defaults to white.
+    final Color backgroundColor = Colors.white,
+
+    /// The transform type of the card. Defaults to [TransformType.identity].
+    final TransformType3d transformType3d = TransformType3d.identity,
+
+    /// The list of children widgets to be displayed in the card slider.
+    final List<Widget> children = const [],
+  }) {
+    return Transformed3DCardlider(
+      imageUrl: imageUrl,
+      directionality: directionality,
+      initialPage: initialPage,
+      viewportFraction: viewportFraction,
+      height: height,
+      width: width,
+      heightCard: heightCard,
+      widthCard: widthCard,
+      onTap: onTap,
+      onDoubleTap: onDoubleTap,
+      onLongPress: onLongPress,
+      cardBackgroundColor: cardBackgroundColor,
+      errorBuilder: errorBuilder,
+      frameBuilder: frameBuilder,
+      cacheHeight: cacheHeight,
+      cacheWidth: cacheWidth,
+      showBackgroundImage: showBackgroundImage,
+      backgroundColor: backgroundColor,
+      sigmaXBlurBackgroundImage: sigmaXBlurBackgroundImage,
+      fit: fit,
+      transformType3d: transformType3d,
       children: children,
     );
   }
