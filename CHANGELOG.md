@@ -18,3 +18,8 @@
 ## 0.0.5
 
 * Fix pub point.
+
+## 0.0.6
+
+* Fix bug.
+* Add new feature Transformed3DCardlider

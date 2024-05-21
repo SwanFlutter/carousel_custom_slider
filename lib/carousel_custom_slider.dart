@@ -7,7 +7,7 @@ import 'dart:async';
 import 'package:carousel_custom_slider/src/auto_scrolling_wheel.dart';
 import 'package:carousel_custom_slider/src/parallax.dart';
 import 'package:carousel_custom_slider/src/simple_page_widget.dart';
-import 'package:carousel_custom_slider/src/transformed_3D_card_slider.dart';
+import 'package:carousel_custom_slider/src/transformed_3d_card_slider.dart';
 import 'package:carousel_custom_slider/src/transformed_card_slider.dart';
 import 'package:carousel_custom_slider/src/widget/page_view_widget.dart';
 import 'package:carousel_custom_slider/transform_type.dart';

@@ -87,7 +87,113 @@ CarouselCustomSlider.parallax(
         ),
 
 ```
+
+
+
+
+```dart
+
+CarouselCustomSlider.transformed3DCardlider(
+              imageUrl: sliderListImage,
+              transformType3d: TransformType3d.identity,
+              showBackgroundImage: false,
+            ),
+
+```
+
+
+```dart
+
+CarouselCustomSlider.transformed3DCardlider(
+              imageUrl: sliderListImage,
+              transformType3d: TransformType3d.identity1,
+              showBackgroundImage: false,
+            ),
+
+```
+
+
+```dart
+
+CarouselCustomSlider.transformed3DCardlider(
+              imageUrl: sliderListImage,
+              transformType3d: TransformType3d.inverted,
+              showBackgroundImage: false,
+            ),
+
+```
+
+
+```dart
+
+CarouselCustomSlider.transformed3DCardlider(
+              imageUrl: sliderListImage,
+              transformType3d: TransformType3d.inverted1,
+              showBackgroundImage: false,
+            ),
+
+```
+
+
+```dart
+
+CarouselCustomSlider.transformed3DCardlider(
+              imageUrl: sliderListImage,
+              transformType3d: TransformType3d.inverted2,
+              showBackgroundImage: false,
+            ),
+
+```
+
+
+
+```dart
+
+CarouselCustomSlider.transformed3DCardlider(
+              imageUrl: sliderListImage,
+              transformType3d: TransformType3d.inverted3,
+              showBackgroundImage: false,
+            ),
+
+```
+
+
+```dart
+
+CarouselCustomSlider.transformed3DCardlider(
+              imageUrl: sliderListImage,
+              transformType3d: TransformType3d.inverted4,
+              showBackgroundImage: false,
+            ),
+
+```
+
+
+```dart
+
+CarouselCustomSlider.transformed3DCardlider(
+              imageUrl: sliderListImage,
+              transformType3d: TransformType3d.rotationY,
+              showBackgroundImage: false,
+            ),
+
+```
+
+
+```dart
+
+CarouselCustomSlider.transformed3DCardlider(
+              imageUrl: sliderListImage,
+              transformType3d: TransformType3d.rotationX,
+              showBackgroundImage: false,
+            ),
+
+```
+
+
 ![TransformType skew](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/7a6a6edc-d2f6-43d6-915a-b5629d792a40)
+
+
 ```dart
  CarouselCustomSlider.transFormedCardSlider(
             transformType: TransformType.skew,
@@ -248,7 +354,7 @@ CarouselCustomSlider.transFormedCardSlider(
 
 ```yaml
 dependencies:
-  carousel_custom_slider: ^0.0.5
+  carousel_custom_slider: ^0.0.6
 ```
 
 ## How to use
@@ -259,12 +365,6 @@ import 'package:carousel_custom_slider/carousel_custom_slider.dart';
 
 ```
 
-## Uses
-```dart
-
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-```
 
 
 You can use these indicators in the effect.

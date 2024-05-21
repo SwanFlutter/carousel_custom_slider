@@ -1,6 +1,6 @@
 name: carousel_custom_slider
 description: "This is a simple slider package, you can put the position of the indicator and text on it and personalize it."
-version: 0.0.5
+version: 0.0.6
 homepage: 'https://github.com/SwanFlutter/carousel_custom_slider'
 repository: 'https://github.com/SwanFlutter/carousel_custom_slider'
 environment:
