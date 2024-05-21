@@ -186,7 +186,7 @@ CarouselCustomSlider.transformed3DCardlider(
               imageUrl: sliderListImage,
               transformType3d: TransformType3d.rotationX,
               showBackgroundImage: false,
-            ),
+),
 
 ```
 
