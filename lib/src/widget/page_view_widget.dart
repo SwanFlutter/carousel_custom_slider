@@ -9,14 +9,10 @@ class PageViewWidget extends StatelessWidget {
     super.key,
     required this.widget,
     required this.index,
-    required this.controller,
   });
 
   /// The Carousel widget to display on the page.
   final CarouselCustomSlider widget;
-
-  /// The PageController managing this page.
-  final PageController controller;
 
   /// The index of the page.
   final int index;

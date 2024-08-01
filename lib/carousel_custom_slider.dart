@@ -6,6 +6,7 @@ import 'dart:async';
 
 import 'package:carousel_custom_slider/src/auto_scrolling_wheel.dart';
 import 'package:carousel_custom_slider/src/parallax.dart';
+import 'package:carousel_custom_slider/src/reflection.dart';
 import 'package:carousel_custom_slider/src/simple_page_widget.dart';
 import 'package:carousel_custom_slider/src/transformed_3d_card_slider.dart';
 import 'package:carousel_custom_slider/src/transformed_card_slider.dart';
@@ -170,6 +171,7 @@ class CarouselCustomSlider extends StatefulWidget {
   /// [borderRadius]: The border radius of the carousel.
   final BorderRadiusGeometry borderRadius;
 
+  /// [children]: The children stack of the carousel.
   final List<Widget> children;
   const CarouselCustomSlider({
     super.key,
@@ -883,6 +885,97 @@ class CarouselCustomSlider extends StatefulWidget {
     );
   }
 
+  ///Example:
+  ///
+  /// ```dart
+  /// CarouselCustomSlider.Reflection(
+  ///   sliderList: [
+  ///     'image1.jpg',
+  ///     'image2.jpg',
+  ///     'image3.jpg',
+  ///   ],
+  ///   showReflection: true,
+  ///   height: 200,
+  ///   fit: BoxFit.fill,
+  ///   children : [],
+  /// ```
+
+  static Widget reflection({
+    /// [sliderList]: The list of images to display.
+    required final List sliderList,
+
+    /// [width]: The width of the image.
+    required final double width,
+
+    /// [height]: The height of the image.
+    required final double height,
+
+    /// [autoPlay]: Whether to automatically play the carousel.
+    final bool autoPlay = true,
+
+    /// [autoPlayInterval]: The interval between auto play animations.
+    final Duration autoPlayInterval = const Duration(seconds: 5),
+
+    /// [autoPlayAnimationDuration]: The duration of auto play animations.
+    final Duration autoPlayAnimationDuration = const Duration(seconds: 2),
+
+    /// [autoPlayCurve]: The curve of auto play animations.
+    final Curve autoPlayCurve = Curves.ease,
+
+    /// [shadowColorStart]: The color of the shadow.
+    final Color shadowColorStart = const Color.fromRGBO(0, 0, 0, 0.4),
+
+    /// [shadowColorEnd]: The color of the shadow.
+    final Color shadowColorEnd = const Color.fromRGBO(0, 0, 0, 0.9),
+
+    /// [reflectionOpacity]: The opacity of the reflection. Defaults to 0.4. between 0.0 and 1.0
+    final double reflectionOpacity = 0.4,
+
+    /// [reflectionBlendMode]: The blend mode of the reflection . Defaults BlendMode.xor.
+    final BlendMode reflectionBlendMode = BlendMode.dst,
+
+    /// [cacheHeight]: The height of the cache.
+    final int cacheHeight = 200,
+
+    /// [cacheWidth]: The width of the cache.
+    final int cacheWidth = 200,
+
+    /// [fit]: The fit of the image.
+    final BoxFit? fit = BoxFit.fill,
+
+    /// [onTap]: The callback when the image is tapped.
+    final void Function()? onTap,
+
+    /// [errorBuilder]: The error builde ImageBuilder.
+    final Widget Function(BuildContext, Object, StackTrace?)? errorBuilder,
+
+    /// [borderColor]: The color of the border.
+    final Color? borderColor,
+
+    /// [showReflection]: Whether to show the reflection.
+    final bool showReflection = true,
+
+    /// [children]: The children stack of the carousel.
+    final List<Widget> children = const [],
+  }) {
+    return Reflection(
+      sliderList: sliderList,
+      width: width,
+      height: height,
+      reflectionOpacity: reflectionOpacity,
+      reflectionBlendMode: reflectionBlendMode,
+      shadowColorStart: shadowColorStart,
+      shadowColorEnd: shadowColorEnd,
+      autoPlay: autoPlay,
+      autoPlayInterval: autoPlayInterval,
+      autoPlayAnimationDuration: autoPlayAnimationDuration,
+      autoPlayCurve: autoPlayCurve,
+      cacheHeight: cacheHeight,
+      cacheWidth: cacheHeight,
+      children: children,
+    );
+  }
+
   @override
   State<CarouselCustomSlider> createState() => _CarouselCustomSliderState();
 }
@@ -930,7 +1023,9 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
     _pageList = List.generate(
       widget.sliderList.length,
       (index) => PageViewWidget(
-          widget: widget, index: index, controller: _pageController),
+        widget: widget,
+        index: index,
+      ),
     );
     startTimer();
   }
@@ -946,7 +1041,7 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
   Widget build(BuildContext context) {
     return Container(
       width: widget.width,
-      height: widget.height,
+      height: widget.height * 2,
       color: widget.backgroundColor,
       child: Stack(
         children: [

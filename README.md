@@ -42,6 +42,59 @@ dotColor: Theme.of(context).colorScheme.inversePrimary,
 ```
 
 
+- New 
+
+Reflection baner you can use web, windows, mac, linux
+
+```dart
+CarouselCustomSlider.reflection(
+                  sliderList: listImage,
+                  showReflection: true,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  fit: BoxFit.fill,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CardPage(),
+                      ),
+                    );
+                  },
+                  children: [
+                    IgnorePointer(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: 25.0,
+                          right: 70.0,
+                          top: MediaQuery.of(context).size.height * 0.15,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(
+                              Icons.arrow_forward,
+                              color: Theme.of(context).primaryColor,
+                              size: 50,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              "View All",
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+```
+
+
 ![20240422_115507](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/a12ed375-8278-43b8-b33a-323be33e801f)
 
 ```dart
