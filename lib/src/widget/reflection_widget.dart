@@ -5,17 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ReflectionWidget extends StatelessWidget {
+  /// The widget to be reflected.
   final Reflection widget;
 
   /// The index of the page.
   final int index;
 
+  /// [onHover] callback function when the mouse is hovering over the widget.
   final void Function(PointerHoverEvent)? onHover;
 
+  /// [onExit] callback function when the mouse is exiting the widget.
   final void Function(PointerExitEvent)? onExit;
 
+  /// [isHovering]  true if the mouse is hovering over the widget.
   final bool isHovering;
 
+  /// [animaton] the animation of the widget.
   final Animation<Offset> animaton;
 
   const ReflectionWidget({
