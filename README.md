@@ -44,7 +44,9 @@ dotColor: Theme.of(context).colorScheme.inversePrimary,
 
 - New 
 
-Reflection baner you can use web, windows, mac, linux
+Reflection baner you can use web, windows, mac, linux.
+
+![reflaction_slider](https://github.com/user-attachments/assets/65a34cfb-3d8e-4e92-b8fa-0c53aaabfba8)
 
 ```dart
 CarouselCustomSlider.reflection(
