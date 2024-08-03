@@ -4,6 +4,7 @@ library carousel_custom_slider;
 
 import 'dart:async';
 
+import 'package:carousel_custom_slider/src/advanced_carousel_slider.dart';
 import 'package:carousel_custom_slider/src/auto_scrolling_wheel.dart';
 import 'package:carousel_custom_slider/src/parallax.dart';
 import 'package:carousel_custom_slider/src/reflection.dart';
@@ -973,6 +974,141 @@ class CarouselCustomSlider extends StatefulWidget {
       cacheHeight: cacheHeight,
       cacheWidth: cacheHeight,
       children: children,
+    );
+  }
+
+  /// Example usage:
+  /// ```dart
+  /// AdvancedCarouselSlider(
+  ///   slides: [
+  ///     'https://example.com/image1.jpg',
+  ///     'https://example.com/image2.jpg',
+  ///     // ...
+  ///   ],
+  ///   height: 200,
+  ///   width: 300,
+  ///   initialPage: 0,
+  ///   viewportFraction: 0.9,
+  ///   backgroundColor: Colors.white,
+  ///   fit: BoxFit.cover,
+  ///   effect: WormEffect(),
+  ///   childrenStackBuilder: (index) {
+  ///     return Text(
+  ///       'Slide ${index + 1}',
+  ///       style: TextStyle(color: Colors.white, fontSize: 24),
+  ///     );
+  ///   },
+  /// ),
+  /// ```
+  static Widget advancedCarouselSlider({
+    /// [slides] is a list of images or other content that will be displayed in the carousel.
+    required final List<String> slides,
+
+    /// [height] The height of the carousel. Defaults to 100. between 0.0 and 100.0 percent
+    final int height = 100,
+
+    /// [width] The width of the carousel. Defaults to 100. between 0.0 and 100.0 percent.
+    final int width = 100,
+
+    /// [viewportFraction] is the fraction of the viewport that each card occupies.
+    final double viewportFraction = 1.0,
+
+    /// [directionality] is the text direction of the carousel.
+    final TextDirection directionality = TextDirection.ltr,
+
+    /// [initialPage] is the initial page to display. Defaults to 1.
+    final int initialPage = 1,
+
+    /// [backgroundColor] is the background color of the carousel.
+    final Color backgroundColor = Colors.white,
+
+    /// [fit] is the fit of the carousel.
+    final BoxFit fit = BoxFit.cover,
+
+    /// [colorFilter] is the color filter of the carousel. Defaults to=>
+    /// ```dart
+    /// ColorFilter.mode(
+    ///    Colors.black
+    ///   .withOpacity(isCurrentPage ? 0.3 : 0.9),
+    ///  BlendMode.xor,
+    /// ),
+    /// ```
+    final ColorFilter? colorFilter,
+
+    /// The direction in which the carousel scrolls.
+    final Axis scrollDirection = Axis.horizontal,
+
+    /// The alignment position of the indicator.
+    final AlignmentGeometry alignmentPositionIndicator = Alignment.bottomCenter,
+
+    /// Whether to display the indicator.
+    final bool isDisplayIndicator = true,
+
+    /// The effect to apply to the carousel items.
+    ///
+    /// You can use various effects like:
+    /// ```dart
+    /// effect : WormEffect(),
+    /// effect : JumpingDotEffect(),
+    /// effect : ScaleEffect(),
+    /// effect : ScrollingDotsEffect(),
+    /// effect : SlideEffect(),
+    /// effect : ExpandingDotsEffect(),
+    /// effect : SwapEffect(
+    ///   dotHeight: 12.0,
+    ///   dotWidth: 12.0,
+    ///   paintStyle: PaintingStyle.fill,
+    ///   type: SwapType.yRotation,
+    ///   activeDotColor: Theme.of(context).primaryColor,
+    ///   dotColor: Theme.of(context).colorScheme.inversePrimary,
+    /// ),
+    /// ```
+    final IndicatorEffect effect = const SlideEffect(
+      dotHeight: 8,
+      dotWidth: 8,
+    ),
+
+    /// The axis direction of the indicator.
+    final Axis axisDirectionIndicator = Axis.horizontal,
+
+    /// The text direction of the indicator.
+    final TextDirection? textDirectionIndicator,
+
+    /// Callback function called when a dot indicator is clicked.
+    final void Function(int)? onDotClicked,
+
+    /// The height of the cache image.
+    final int? cacheHeigh = 300,
+
+    /// The width of the cache image.
+    final int? cacheWidth = 300,
+
+    /// A builder function that returns a widget to display on top of each slide.
+    ///
+    /// The function receives the index of the current slide and returns a widget.
+    final Widget? Function(int index) childrenStackBuilder =
+        AdvancedCarouselSlider.defaultChildrenStackBuilder,
+  }) {
+    return AdvancedCarouselSlider(
+      slides: slides,
+      height: height,
+      width: width,
+      viewportFraction: viewportFraction,
+      scrollDirection: scrollDirection,
+      alignmentPositionIndicator: alignmentPositionIndicator,
+      axisDirectionIndicator: scrollDirection,
+      backgroundColor: backgroundColor,
+      directionality: directionality,
+      fit: fit,
+      onDotClicked: onDotClicked,
+      textDirectionIndicator: textDirectionIndicator,
+      colorFilter: colorFilter,
+      initialPage: initialPage,
+      effect: effect,
+      isDisplayIndicator: isDisplayIndicator,
+      cacheHeigh: cacheHeigh,
+      cacheWidth: cacheWidth,
+      childrenStackBuilder: childrenStackBuilder,
     );
   }
 
