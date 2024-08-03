@@ -1020,7 +1020,7 @@ class CarouselCustomSlider extends StatefulWidget {
     final int initialPage = 1,
 
     /// [backgroundColor] is the background color of the carousel.
-    final Color backgroundColor = Colors.white,
+    final Color backgroundColor = Colors.black,
 
     /// [fit] is the fit of the carousel.
     final BoxFit fit = BoxFit.cover,
