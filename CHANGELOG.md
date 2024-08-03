@@ -27,3 +27,7 @@
 ## 0.0.7
 
 * Add to new feature.
+
+## 0.0.7+1
+
+* Fix bug.

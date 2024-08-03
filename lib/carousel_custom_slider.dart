@@ -1005,10 +1005,10 @@ class CarouselCustomSlider extends StatefulWidget {
     required final List<String> slides,
 
     /// [height] The height of the carousel. Defaults to 100. between 0.0 and 100.0 percent
-    final int height = 100,
+    final double height = 100,
 
     /// [width] The width of the carousel. Defaults to 100. between 0.0 and 100.0 percent.
-    final int width = 100,
+    final double width = 100,
 
     /// [viewportFraction] is the fraction of the viewport that each card occupies.
     final double viewportFraction = 1.0,

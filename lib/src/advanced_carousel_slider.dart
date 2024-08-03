@@ -38,10 +38,10 @@ class AdvancedCarouselSlider extends StatefulWidget {
   final List<String> slides;
 
   /// [height] The height of the carousel. Defaults to 100. between 0.0 and 100.0 percent
-  final int height;
+  final double height;
 
   /// [width] The width of the carousel. Defaults to 100. between 0.0 and 100.0 percent.
-  final int width;
+  final double width;
 
   /// [viewportFraction] is the fraction of the viewport that each card occupies.
   final double viewportFraction;
@@ -167,87 +167,83 @@ class _AdvancedCarouselSliderState extends State<AdvancedCarouselSlider> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    final double totalHeight = size.height * widget.height / 100;
-    final double indicatorHeight =
-        widget.isDisplayIndicator ? size.height * 0.05 : 0.0;
-    final double pageViewHeight = totalHeight - indicatorHeight - 20;
-
-    print(size.height);
-
     return Container(
-      height: totalHeight,
-      width: MediaQuery.of(context).size.width * widget.width / 100,
+      height: widget.height,
+      width: widget.width,
       color: widget.backgroundColor,
       child: Padding(
-        padding: const EdgeInsets.only(top: 10.0),
+        padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: pageViewHeight,
-              child: PageView.builder(
-                controller: _controller,
-                scrollDirection: widget.scrollDirection,
-                physics: const BouncingScrollPhysics(),
-                onPageChanged: (index) {
-                  setState(() {
-                    _currentPage = index;
-                  });
-                },
-                itemCount: widget.slides.length,
-                itemBuilder: (context, index) {
-                  bool isCurrentPage = index == _currentPage;
-                  return Directionality(
-                    textDirection: widget.directionality,
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 800),
-                      curve: Curves.ease,
-                      margin: EdgeInsets.symmetric(
-                          horizontal: 10, vertical: isCurrentPage ? 0 : 20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          filterQuality: FilterQuality.high,
-                          image: Image.network(
-                            widget.slides[index],
-                            height: double.infinity,
-                            width: double.infinity,
-                            cacheHeight: widget.cacheHeigh,
-                            cacheWidth: widget.cacheWidth,
-                          ).image,
-                          fit: widget.fit,
-                          colorFilter: widget.colorFilter ??
-                              ColorFilter.mode(
-                                Colors.black
-                                    .withOpacity(isCurrentPage ? 0.3 : 0.9),
-                                BlendMode.xor,
-                              ),
+            Expanded(
+              flex: 9,
+              child: SizedBox(
+                child: PageView.builder(
+                  controller: _controller,
+                  scrollDirection: widget.scrollDirection,
+                  physics: const BouncingScrollPhysics(),
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentPage = index;
+                    });
+                  },
+                  itemCount: widget.slides.length,
+                  itemBuilder: (context, index) {
+                    bool isCurrentPage = index == _currentPage;
+                    return Directionality(
+                      textDirection: widget.directionality,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 800),
+                        curve: Curves.ease,
+                        margin: EdgeInsets.symmetric(
+                            horizontal: 10, vertical: isCurrentPage ? 0 : 20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                            filterQuality: FilterQuality.high,
+                            image: Image.network(
+                              widget.slides[index],
+                              height: double.infinity,
+                              width: double.infinity,
+                              cacheHeight: widget.cacheHeigh,
+                              cacheWidth: widget.cacheWidth,
+                            ).image,
+                            fit: widget.fit,
+                            colorFilter: widget.colorFilter ??
+                                ColorFilter.mode(
+                                  Colors.black
+                                      .withOpacity(isCurrentPage ? 0.3 : 0.7),
+                                  BlendMode.xor,
+                                ),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: widget.childrenStackBuilder(index),
                         ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: widget.childrenStackBuilder(index),
-                      ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
             if (widget.isDisplayIndicator)
-              SizedBox(
-                height: indicatorHeight,
-                child: Align(
-                  alignment: widget.alignmentPositionIndicator,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: SmoothPageIndicator(
-                      controller: _controller,
-                      count: widget.slides.length,
-                      effect: widget.effect,
-                      axisDirection: widget.axisDirectionIndicator,
-                      textDirection: widget.textDirectionIndicator,
-                      onDotClicked: widget.onDotClicked,
+              Expanded(
+                flex: 1,
+                child: SizedBox(
+                  child: Align(
+                    alignment: widget.alignmentPositionIndicator,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SmoothPageIndicator(
+                        controller: _controller,
+                        count: widget.slides.length,
+                        effect: widget.effect,
+                        axisDirection: widget.axisDirectionIndicator,
+                        textDirection: widget.textDirectionIndicator,
+                        onDotClicked: widget.onDotClicked,
+                      ),
                     ),
                   ),
                 ),
