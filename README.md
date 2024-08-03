@@ -41,6 +41,67 @@ dotColor: Theme.of(context).colorScheme.inversePrimary,
   ),
 ```
 
+- new 
+
+```dart
+CarouselCustomSlider.advancedCarouselSlider(
+                slides: listSlide,
+                height: 90,
+                viewportFraction: 0.8,
+                childrenStackBuilder: (int index) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        slides[index]['title']!,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        slides[index]['subtitle']!,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        slides[index]['description']!,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+
+  List<Map<String, String>> slides = [
+  {
+    "image":
+        "https://devloop01.github.io/voyage-slider/images/scotland-mountains.jpg",
+    "title": "Highlands",
+    "subtitle": "Scotland",
+    "description": "The mountains are calling"
+  },
+  {
+    "image": "https://devloop01.github.io/voyage-slider/images/machu-pichu.jpg",
+    "title": "Machu Pichu",
+    "subtitle": "Peru",
+    "description": "Adventure is never far away"
+  },
+  {
+    "image": "https://devloop01.github.io/voyage-slider/images/chamonix.jpg",
+    "title": "Chamonix",
+    "subtitle": "France",
+    "description": "Let your dreams come true"
+  },
+              ];
+```
 
 - New 
 

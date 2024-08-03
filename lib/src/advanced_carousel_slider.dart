@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 ///     'https://example.com/image2.jpg',
 ///     // ...
 ///   ],
-///   height: 200,
+///   height: 90,
 ///   width: 300,
 ///   initialPage: 0,
 ///   viewportFraction: 0.9,
