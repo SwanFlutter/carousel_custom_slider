@@ -23,3 +23,7 @@
 
 * Fix bug.
 * Add new feature Transformed3DCardlider
+
+## 0.0.7
+
+* Add to new feature.
