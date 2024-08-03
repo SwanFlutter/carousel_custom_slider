@@ -41,7 +41,10 @@ dotColor: Theme.of(context).colorScheme.inversePrimary,
   ),
 ```
 
-- new 
+- new
+
+![carousel](https://github.com/user-attachments/assets/b3cea922-61e6-498f-9be2-2857b9daf6cf)
+
 
 ```dart
 CarouselCustomSlider.advancedCarouselSlider(
