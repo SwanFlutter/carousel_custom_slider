@@ -31,3 +31,8 @@
 ## 0.0.7+1
 
 * Fix bug.
+
+## 0.0.7+2
+
+* Fix bug.
+* Edit perperty children (List<Widget>) convert to childrenStackBuilder(Widget Function(int index)? childrenStackBuilder)

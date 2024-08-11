@@ -38,10 +38,10 @@ class AdvancedCarouselSlider extends StatefulWidget {
   final List<String> slides;
 
   /// [height] The height of the carousel. Defaults to 100. between 0.0 and 100.0 percent
-  final double height;
+  final double? height;
 
   /// [width] The width of the carousel. Defaults to 100. between 0.0 and 100.0 percent.
-  final double width;
+  final double? width;
 
   /// [viewportFraction] is the fraction of the viewport that each card occupies.
   final double viewportFraction;
@@ -125,8 +125,8 @@ class AdvancedCarouselSlider extends StatefulWidget {
   const AdvancedCarouselSlider({
     super.key,
     required this.slides,
-    this.height = 100,
-    this.width = 100,
+    this.height,
+    this.width,
     this.viewportFraction = 0.8,
     this.directionality = TextDirection.ltr,
     this.initialPage = 1,
@@ -167,9 +167,10 @@ class _AdvancedCarouselSliderState extends State<AdvancedCarouselSlider> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
-      height: widget.height,
-      width: widget.width,
+      height: widget.height ?? size.height * 0.9,
+      width: widget.width ?? size.width,
       color: widget.backgroundColor,
       child: Padding(
         padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -213,7 +214,7 @@ class _AdvancedCarouselSliderState extends State<AdvancedCarouselSlider> {
                             colorFilter: widget.colorFilter ??
                                 ColorFilter.mode(
                                   Colors.black
-                                      .withOpacity(isCurrentPage ? 0.3 : 0.7),
+                                      .withOpacity(isCurrentPage ? 0.3 : 0.9),
                                   BlendMode.xor,
                                 ),
                           ),

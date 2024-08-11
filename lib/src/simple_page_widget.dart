@@ -103,9 +103,6 @@ class SimplePageWidget extends StatefulWidget {
   /// The horizontal transform of the card. Defaults to 250.
   final int horizontalTransform;
 
-  /// The list of children widgets to be displayed in the card slider.
-  final List<Widget> children;
-
   /// The explicit height of the card.
   final double? height;
 
@@ -131,6 +128,12 @@ class SimplePageWidget extends StatefulWidget {
 
   /// The fit property of the image widget.
   final BoxFit? fit;
+
+  /// A builder function that returns a widget to display on top of each slide.
+  ///
+  /// The function receives the index of the current slide and returns a widget.
+  final List<Widget> Function(int index)? childrenStackBuilder;
+
   const SimplePageWidget({
     super.key,
     required this.imageUrl,
@@ -161,7 +164,7 @@ class SimplePageWidget extends StatefulWidget {
     this.directionality = TextDirection.ltr,
     this.filterQuality = FilterQuality.low,
     this.fit = BoxFit.fitHeight,
-    this.children = const [],
+    this.childrenStackBuilder,
   });
 
   @override

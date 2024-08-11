@@ -75,7 +75,8 @@ class ReflectionWidget extends StatelessWidget {
                     ),
                   ),
                   if (isHovering)
-                    ...widget.children
+                    widget.childrenStackBuilder!(index) ??
+                        const SizedBox.shrink()
                   else
                     const SizedBox.shrink(),
                 ],

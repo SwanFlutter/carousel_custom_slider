@@ -172,8 +172,11 @@ class CarouselCustomSlider extends StatefulWidget {
   /// [borderRadius]: The border radius of the carousel.
   final BorderRadiusGeometry borderRadius;
 
-  /// [children]: The children stack of the carousel.
-  final List<Widget> children;
+  /// A builder function that returns a widget to display on top of each slide.
+  ///
+  /// The function receives the index of the current slide and returns a widget.
+  final Widget Function(int index)? childrenStackBuilder;
+
   const CarouselCustomSlider({
     super.key,
     required this.sliderList,
@@ -216,7 +219,7 @@ class CarouselCustomSlider extends StatefulWidget {
       dotHeight: 8,
       dotWidth: 8,
     ),
-    this.children = const [],
+    this.childrenStackBuilder,
   });
 
   /// [autoScrollingWheel]: A widget that automatically ListWheel scrolls to the next item in a list at a specified interval.
@@ -380,9 +383,6 @@ class CarouselCustomSlider extends StatefulWidget {
     /// The horizontal transform of the card. Defaults to 250.
     final int horizontalTransform = 250,
 
-    /// The list of children widgets to be displayed in the card slider.
-    final List<Widget> children = const [],
-
     /// The title text displayed on the card.
     final String? title,
 
@@ -408,6 +408,11 @@ class CarouselCustomSlider extends StatefulWidget {
 
     /// The filter quality for widget images.
     final FilterQuality filterQuality = FilterQuality.low,
+
+    /// A builder function that returns a widget to display on top of each slide.
+    ///
+    /// The function receives the index of the current slide and returns a widget.
+    final Widget Function(int index)? childrenStackBuilder,
   }) {
     return Parallax(
       imageUrl: imageUrl,
@@ -437,7 +442,7 @@ class CarouselCustomSlider extends StatefulWidget {
       customCurve: customCurve,
       directionality: directionality,
       filterQuality: filterQuality,
-      children: children,
+      childrenStackBuilder: childrenStackBuilder,
     );
   }
 
@@ -540,9 +545,6 @@ class CarouselCustomSlider extends StatefulWidget {
     /// The horizontal transform of the card. Defaults to 250.
     final int horizontalTransform = 250,
 
-    /// The list of children widgets to be displayed in the card slider.
-    final List<Widget> children = const [],
-
     /// The explicit height of the card.
     final double? height,
 
@@ -568,6 +570,11 @@ class CarouselCustomSlider extends StatefulWidget {
 
     /// The fit property of the image widget.
     final BoxFit? fit = BoxFit.fitHeight,
+
+    /// A builder function that returns a widget to display on top of each slide.
+    ///
+    /// The function receives the index of the current slide and returns a widget.
+    final List<Widget> Function(int index)? childrenStackBuilder,
   }) {
     return SimplePageWidget(
       imageUrl: imageUrl,
@@ -598,7 +605,7 @@ class CarouselCustomSlider extends StatefulWidget {
       directionality: directionality,
       filterQuality: filterQuality,
       fit: fit,
-      children: children,
+      childrenStackBuilder: childrenStackBuilder,
     );
   }
 
@@ -730,8 +737,10 @@ class CarouselCustomSlider extends StatefulWidget {
     /// The transform type of the card. Defaults to [TransformType.skew].
     final TransformType transformType = TransformType.skew,
 
-    /// The list of children widgets to be displayed in the card slider.
-    final List<Widget> children = const [],
+    /// A builder function that returns a widget to display on top of each slide.
+    ///
+    /// The function receives the index of the current slide and returns a widget.
+    final List<Widget> Function(int index)? childrenStackBuilder,
   }) {
     return TransformedCardSlider(
       imageUrl: imageUrl,
@@ -763,7 +772,7 @@ class CarouselCustomSlider extends StatefulWidget {
       filterQuality: filterQuality,
       fit: fit,
       transformType: transformType,
-      children: children,
+      childrenStackBuilder: childrenStackBuilder,
     );
   }
 
@@ -857,8 +866,10 @@ class CarouselCustomSlider extends StatefulWidget {
     /// The transform type of the card. Defaults to [TransformType.identity].
     final TransformType3d transformType3d = TransformType3d.identity,
 
-    /// The list of children widgets to be displayed in the card slider.
-    final List<Widget> children = const [],
+    /// A builder function that returns a widget to display on top of each slide.
+    ///
+    /// The function receives the index of the current slide and returns a widget.
+    final Widget Function(int index)? childrenStackBuilder,
   }) {
     return Transformed3DCardlider(
       imageUrl: imageUrl,
@@ -882,7 +893,7 @@ class CarouselCustomSlider extends StatefulWidget {
       sigmaXBlurBackgroundImage: sigmaXBlurBackgroundImage,
       fit: fit,
       transformType3d: transformType3d,
-      children: children,
+      childrenStackBuilder: childrenStackBuilder,
     );
   }
 
@@ -898,7 +909,7 @@ class CarouselCustomSlider extends StatefulWidget {
   ///   showReflection: true,
   ///   height: 200,
   ///   fit: BoxFit.fill,
-  ///   children : [],
+  ///   childrenStackBuilder : [],
   /// ```
 
   static Widget reflection({
@@ -956,8 +967,10 @@ class CarouselCustomSlider extends StatefulWidget {
     /// [showReflection]: Whether to show the reflection.
     final bool showReflection = true,
 
-    /// [children]: The children stack of the carousel.
-    final List<Widget> children = const [],
+    /// A builder function that returns a widget to display on top of each slide.
+    ///
+    /// The function receives the index of the current slide and returns a widget.
+    final Widget? Function(int index)? childrenStackBuilder,
   }) {
     return Reflection(
       sliderList: sliderList,
@@ -973,7 +986,7 @@ class CarouselCustomSlider extends StatefulWidget {
       autoPlayCurve: autoPlayCurve,
       cacheHeight: cacheHeight,
       cacheWidth: cacheHeight,
-      children: children,
+      childrenStackBuilder: childrenStackBuilder,
     );
   }
 
@@ -998,6 +1011,14 @@ class CarouselCustomSlider extends StatefulWidget {
   ///       style: TextStyle(color: Colors.white, fontSize: 24),
   ///     );
   ///   },
+  /// ),
+  /// ```
+  /// [colorFilter] is the color filter of the carousel. Defaults to=>
+  /// ```dart
+  /// ColorFilter.mode(
+  ///    Colors.black
+  ///   .withOpacity(isCurrentPage ? 0.3 : 0.9),
+  ///  BlendMode.xor,
   /// ),
   /// ```
   static Widget advancedCarouselSlider({
@@ -1177,7 +1198,7 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
   Widget build(BuildContext context) {
     return Container(
       width: widget.width,
-      height: widget.height * 2,
+      height: widget.height,
       color: widget.backgroundColor,
       child: Stack(
         children: [

@@ -28,8 +28,7 @@ alignmentPositionIndicator: Alignment.bottomCenter,
 viewportFraction: 1,
 viewportFractionPadingvertical: 0,
 sliderList: sliderListImage,
-sliderTitlePost: sliderTitlePost,
-sliderBodyPost: sliderTitlePost,
+
 effect: SwapEffect(
 dotHeight: 12.0,
 dotWidth: 12.0,
@@ -37,6 +36,15 @@ paintStyle: PaintingStyle.fill,
  type: SwapType.yRotation,
 activeDotColor: Theme.of(context).primaryColor,
 dotColor: Theme.of(context).colorScheme.inversePrimary,
+childrenStackBuilder: (index) {
+    return Text(
+      sliderTitlePost[index],
+      style: const TextStyle(
+       fontSize: 30,
+       fontWeight: FontWeight.bold,
+      color: Colors.white),
+   );
+  }
  ),
   ),
 ```
@@ -137,7 +145,7 @@ CarouselCustomSlider.reflection(
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
+                          childrenStackBuilder(int index){
                             Icon(
                               Icons.arrow_forward,
                               color: Theme.of(context).primaryColor,
@@ -152,7 +160,7 @@ CarouselCustomSlider.reflection(
                                 fontWeight: FontWeight.bold,
                               ),
                             )
-                          ],
+                          },
                         ),
                       ),
                     )
@@ -193,16 +201,16 @@ CarouselCustomSlider.parallax(
           valueScalingFactor: 0.4,
           viewportFraction: 0.8,
           dynamicHeight: 600,
-          children: [
+          childrenStackBuilder(int index) {
             const Positioned(
               left: 25,
               bottom: 25.0,
               child: Text(
-                'Parallax',
+                'Parallax$index',
                 style: TextStyle(color: Colors.white, fontSize: 30.0),
               ),
             ),
-          ],
+          },
         ),
 
 ```
@@ -346,7 +354,7 @@ CarouselCustomSlider.transformed3DCardlider(
             valueScalingFactor: 0.4, //BorderSide.strokeAlignCenter
             viewportFraction: 0.7,
             customCurve: Curves.bounceInOut,
-           children: [
+            childrenStackBuilder(int index){
             const Positioned(
               left: 25,
               bottom: 25.0,
@@ -355,7 +363,7 @@ CarouselCustomSlider.transformed3DCardlider(
                 style: TextStyle(color: Colors.white, fontSize: 30.0),
               ),
             ),
-          ],
+          },
           ),
         
 ```
@@ -371,7 +379,7 @@ CarouselCustomSlider.transFormedCardSlider(
             valueScalingFactor: 0.4, //BorderSide.strokeAlignCenter
             viewportFraction: 0.7,
             customCurve: Curves.bounceInOut,
-           children: [
+            childrenStackBuilder(int index){
             const Positioned(
               left: 25,
               bottom: 25.0,
@@ -380,7 +388,7 @@ CarouselCustomSlider.transFormedCardSlider(
                 style: TextStyle(color: Colors.white, fontSize: 30.0),
               ),
             ),
-          ],
+         },
           ),
 
 ```
@@ -397,7 +405,7 @@ CarouselCustomSlider.transFormedCardSlider(
             valueScalingFactor: 0.3, //BorderSide.strokeAlignCenter
             viewportFraction: 0.7,
             customCurve: Curves.bounceInOut,
-           children: [
+            childrenStackBuilder(int index){
             const Positioned(
               left: 25,
               bottom: 25.0,
@@ -406,7 +414,7 @@ CarouselCustomSlider.transFormedCardSlider(
                 style: TextStyle(color: Colors.white, fontSize: 30.0),
               ),
             ),
-          ],
+            },
           ),
 
 ```
@@ -424,7 +432,7 @@ CarouselCustomSlider.transFormedCardSlider(
             valueScalingFactor: 0.3, //BorderSide.strokeAlignCenter
             viewportFraction: 0.7,
             customCurve: Curves.bounceInOut,
-           children: [
+            childrenStackBuilder(int index){
             const Positioned(
               left: 25,
               bottom: 25.0,
@@ -433,7 +441,7 @@ CarouselCustomSlider.transFormedCardSlider(
                 style: TextStyle(color: Colors.white, fontSize: 30.0),
               ),
             ),
-          ],
+          },
           ),
 
 ```
@@ -450,7 +458,7 @@ CarouselCustomSlider.transFormedCardSlider(
             valueScalingFactor: 0.3, //BorderSide.strokeAlignCenter
             viewportFraction: 0.7,
             customCurve: Curves.bounceInOut,
-           children: [
+           childrenStackBuilder(int index){
             const Positioned(
               left: 25,
               bottom: 25.0,
@@ -459,7 +467,7 @@ CarouselCustomSlider.transFormedCardSlider(
                 style: TextStyle(color: Colors.white, fontSize: 30.0),
               ),
             ),
-          ],
+          },
           ),
 
 ```
@@ -476,7 +484,7 @@ CarouselCustomSlider.transFormedCardSlider(
             valueScalingFactor: 0.3, //BorderSide.strokeAlignCenter
             viewportFraction: 0.7,
             customCurve: Curves.bounceInOut,
-           children: [
+            childrenStackBuilder(int index){
             const Positioned(
               left: 25,
               bottom: 25.0,
@@ -485,7 +493,7 @@ CarouselCustomSlider.transFormedCardSlider(
                 style: TextStyle(color: Colors.white, fontSize: 30.0),
               ),
             ),
-          ],
+          },
           ),
 
 ```
@@ -497,7 +505,7 @@ CarouselCustomSlider.transFormedCardSlider(
 
 ```yaml
 dependencies:
-  carousel_custom_slider: ^0.0.7+1
+  carousel_custom_slider: ^0.0.7+2
 ```
 
 ## How to use

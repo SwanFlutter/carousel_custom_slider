@@ -70,7 +70,7 @@ class PageViewWidget extends StatelessWidget {
             },
           ),
         ),
-        ...widget.children,
+        widget.childrenStackBuilder!(index),
       ],
     );
   }

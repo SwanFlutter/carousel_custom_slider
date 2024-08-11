@@ -73,8 +73,10 @@ class Reflection extends StatefulWidget {
   /// [showReflection]: Whether to show the reflection.
   final bool showReflection;
 
-  /// [children]: The children stack of the carousel.
-  final List<Widget> children;
+  /// A builder function that returns a widget to display on top of each slide.
+  ///
+  /// The function receives the index of the current slide and returns a widget.
+  final Widget? Function(int index)? childrenStackBuilder;
   const Reflection({
     super.key,
     required this.sliderList,
@@ -95,7 +97,7 @@ class Reflection extends StatefulWidget {
     this.onTap,
     this.borderColor,
     this.showReflection = true,
-    this.children = const [],
+    this.childrenStackBuilder,
   });
 
   @override

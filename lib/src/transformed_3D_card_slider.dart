@@ -81,8 +81,10 @@ class Transformed3DCardlider extends StatefulWidget {
   /// The transform type of the card. Defaults to [TransformType.identity].
   final TransformType3d transformType3d;
 
-  /// The list of children widgets to be displayed in the card slider.
-  final List<Widget> children;
+  /// A builder function that returns a widget to display on top of each slide.
+  ///
+  /// The function receives the index of the current slide and returns a widget.
+  final Widget Function(int index)? childrenStackBuilder;
 
   const Transformed3DCardlider({
     super.key,
@@ -107,7 +109,7 @@ class Transformed3DCardlider extends StatefulWidget {
     this.fit = BoxFit.fitHeight,
     this.backgroundColor = Colors.white,
     this.transformType3d = TransformType3d.identity,
-    this.children = const [],
+    this.childrenStackBuilder,
   });
 
   @override
@@ -243,7 +245,7 @@ class _Transformed3DCardliderState extends State<Transformed3DCardlider> {
                                       cacheWidth: widget.cacheWidth,
                                     ),
                                   ),
-                                  ...widget.children
+                                  widget.childrenStackBuilder!(index)
                                 ],
                               ),
                             ),
@@ -338,7 +340,7 @@ class _Transformed3DCardliderState extends State<Transformed3DCardlider> {
                                       cacheHeight: widget.cacheHeight,
                                       cacheWidth: widget.cacheWidth,
                                     ),
-                                    ...widget.children
+                                    widget.childrenStackBuilder!(index)
                                   ],
                                 ),
                               ),

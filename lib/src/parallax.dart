@@ -104,9 +104,6 @@ class Parallax extends StatefulWidget {
   /// The horizontal transform of the card. Defaults to 250.
   final int horizontalTransform;
 
-  /// The list of children widgets to be displayed in the card slider.
-  final List<Widget> children;
-
   /// The explicit height of the card.
   final double? height;
 
@@ -129,6 +126,12 @@ class Parallax extends StatefulWidget {
 
   /// The filter quality for widget images.
   final FilterQuality filterQuality;
+
+  /// A builder function that returns a widget to display on top of each slide.
+  ///
+  /// The function receives the index of the current slide and returns a widget.
+  final Widget Function(int index)? childrenStackBuilder;
+
   const Parallax({
     required this.imageUrl,
     super.key,
@@ -158,7 +161,7 @@ class Parallax extends StatefulWidget {
     this.customCurve = Curves.ease,
     this.directionality = TextDirection.ltr,
     this.filterQuality = FilterQuality.low,
-    this.children = const [],
+    this.childrenStackBuilder,
   });
 
   @override

@@ -103,9 +103,6 @@ class TransformedCardSlider extends StatefulWidget {
   /// The horizontal transform of the card. Defaults to 250.
   final int horizontalTransform;
 
-  /// The list of children widgets to be displayed in the card slider.
-  final List<Widget> children;
-
   /// The explicit height of the card.
   final double? height;
 
@@ -134,6 +131,11 @@ class TransformedCardSlider extends StatefulWidget {
 
   /// The transform type of the card. Defaults to [TransformType.skew].
   final TransformType transformType;
+
+  /// A builder function that returns a widget to display on top of each slide.
+  ///
+  /// The function receives the index of the current slide and returns a widget.
+  final List<Widget> Function(int index)? childrenStackBuilder;
 
   const TransformedCardSlider({
     super.key,
@@ -166,7 +168,7 @@ class TransformedCardSlider extends StatefulWidget {
     this.filterQuality = FilterQuality.low,
     this.fit = BoxFit.fitHeight,
     this.transformType = TransformType.skew,
-    this.children = const [],
+    this.childrenStackBuilder,
   });
 
   @override
@@ -209,60 +211,62 @@ class _TransformedCardSliderState extends State<TransformedCardSlider> {
             height: widget.height ?? size.height,
             width: widget.width ?? size.width,
             decoration: BoxDecoration(borderRadius: widget.borderRadius),
-            child: Stack(children: [
-              ImageFiltered(
-                imageFilter: ImageFilter.blur(
-                  sigmaX: widget.showBackgroundImage
-                      ? widget.sigmaXBlurBackgroundImage
-                      : 0,
-                  sigmaY: widget.showBackgroundImage
-                      ? widget.sigmaXBlurBackgroundImage
-                      : 0,
-                ),
-                child: Container(
-                  width: size.width,
-                  height: size.height,
-                  decoration: widget.showBackgroundImage
-                      ? BoxDecoration(
-                          image: DecorationImage(
-                            image: Image.network(
-                              widget.imageUrl[_currentPage],
-                              cacheHeight: widget.cacheHeight,
-                              cacheWidth: widget.cacheWidth,
-                              errorBuilder: widget.errorBuilder,
-                            ).image,
-                            fit: widget.fit,
+            child: Stack(
+              children: [
+                ImageFiltered(
+                  imageFilter: ImageFilter.blur(
+                    sigmaX: widget.showBackgroundImage
+                        ? widget.sigmaXBlurBackgroundImage
+                        : 0,
+                    sigmaY: widget.showBackgroundImage
+                        ? widget.sigmaXBlurBackgroundImage
+                        : 0,
+                  ),
+                  child: Container(
+                    width: size.width,
+                    height: size.height,
+                    decoration: widget.showBackgroundImage
+                        ? BoxDecoration(
+                            image: DecorationImage(
+                              image: Image.network(
+                                widget.imageUrl[_currentPage],
+                                cacheHeight: widget.cacheHeight,
+                                cacheWidth: widget.cacheWidth,
+                                errorBuilder: widget.errorBuilder,
+                              ).image,
+                              fit: widget.fit,
+                            ),
+                          )
+                        : BoxDecoration(
+                            color: widget.backgroundColor,
                           ),
-                        )
-                      : BoxDecoration(
-                          color: widget.backgroundColor,
-                        ),
+                  ),
                 ),
-              ),
-              PageView.builder(
-                physics: const BouncingScrollPhysics(),
-                controller: _pageController,
-                itemCount: widget.imageUrl.length,
-                onPageChanged: (val) {
-                  setState(() {
-                    _currentPage = val;
-                  });
-                },
-                itemBuilder: (context, index) {
-                  final persent = (_currentPage - index);
-                  final transValue = persent.clamp(0, 1.0);
-                  return AnimatedSwitcher(
-                    duration: widget.duration,
-                    child: CustomCardTransformWidget(
-                      widget: widget,
-                      index: index,
-                      pageController: _pageController,
-                      imageOffset: transValue.toInt(),
-                    ),
-                  );
-                },
-              ),
-            ]),
+                PageView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  controller: _pageController,
+                  itemCount: widget.imageUrl.length,
+                  onPageChanged: (val) {
+                    setState(() {
+                      _currentPage = val;
+                    });
+                  },
+                  itemBuilder: (context, index) {
+                    final persent = (_currentPage - index);
+                    final transValue = persent.clamp(0, 1.0);
+                    return AnimatedSwitcher(
+                      duration: widget.duration,
+                      child: CustomCardTransformWidget(
+                        widget: widget,
+                        index: index,
+                        pageController: _pageController,
+                        imageOffset: transValue.toInt(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

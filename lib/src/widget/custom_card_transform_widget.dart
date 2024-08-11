@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:carousel_custom_slider/src/transformed_card_slider.dart';
 import 'package:carousel_custom_slider/transform_type.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +82,10 @@ class _CustomCardTransformWidgetState extends State<CustomCardTransformWidget> {
               ),
             ),
             child: Stack(
-              children: widget.widget.children,
+              children: widget.widget.childrenStackBuilder!(widget.index)
+                  .where((widget) => widget != null)
+                  .cast<Widget>()
+                  .toList(),
             ),
           ),
         ),

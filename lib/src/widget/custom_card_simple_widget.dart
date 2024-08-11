@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:carousel_custom_slider/src/simple_page_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -68,7 +70,10 @@ class _CustomCardSimpleWidgetState extends State<CustomCardSimpleWidget> {
             ),
           ),
           child: Stack(
-            children: widget.widget.children,
+            children: widget.widget.childrenStackBuilder!(widget.index)
+                .where((widget) => widget != null)
+                .cast<Widget>()
+                .toList(),
           ),
         ),
       ),
