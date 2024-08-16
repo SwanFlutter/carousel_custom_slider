@@ -1,6 +1,6 @@
 ## 0.0.1
 
-* Create Package.
+* Initial release.
 
 ## 0.0.2
 
@@ -35,4 +35,8 @@
 ## 0.0.7+2
 
 * Fix bug.
-* Edit perperty children (List<Widget>) convert to childrenStackBuilder(Widget Function(int index)? childrenStackBuilder)
+* Edit perperty children (List<widget>) convert to childrenStackBuilder(Widget Function(int index)? childrenStackBuilder)
+
+## 0.0.7+3
+
+* Fix bug.

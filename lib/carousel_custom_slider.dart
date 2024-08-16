@@ -219,7 +219,7 @@ class CarouselCustomSlider extends StatefulWidget {
       dotHeight: 8,
       dotWidth: 8,
     ),
-    this.childrenStackBuilder,
+    this.childrenStackBuilder = defaultChildrenStackBuilder,
   });
 
   /// [autoScrollingWheel]: A widget that automatically ListWheel scrolls to the next item in a list at a specified interval.
@@ -412,7 +412,8 @@ class CarouselCustomSlider extends StatefulWidget {
     /// A builder function that returns a widget to display on top of each slide.
     ///
     /// The function receives the index of the current slide and returns a widget.
-    final Widget Function(int index)? childrenStackBuilder,
+    final Widget Function(int index)? childrenStackBuilder =
+        defaultChildrenStackBuilder,
   }) {
     return Parallax(
       imageUrl: imageUrl,
@@ -740,7 +741,8 @@ class CarouselCustomSlider extends StatefulWidget {
     /// A builder function that returns a widget to display on top of each slide.
     ///
     /// The function receives the index of the current slide and returns a widget.
-    final List<Widget> Function(int index)? childrenStackBuilder,
+    final List<Widget> Function(int index)? childrenStackBuilder =
+        defaultChildrenStackBuilders,
   }) {
     return TransformedCardSlider(
       imageUrl: imageUrl,
@@ -869,7 +871,8 @@ class CarouselCustomSlider extends StatefulWidget {
     /// A builder function that returns a widget to display on top of each slide.
     ///
     /// The function receives the index of the current slide and returns a widget.
-    final Widget Function(int index)? childrenStackBuilder,
+    final Widget Function(int index)? childrenStackBuilder =
+        defaultChildrenStackBuilder,
   }) {
     return Transformed3DCardlider(
       imageUrl: imageUrl,
@@ -970,7 +973,8 @@ class CarouselCustomSlider extends StatefulWidget {
     /// A builder function that returns a widget to display on top of each slide.
     ///
     /// The function receives the index of the current slide and returns a widget.
-    final Widget? Function(int index)? childrenStackBuilder,
+    final Widget? Function(int index)? childrenStackBuilder =
+        AdvancedCarouselSlider.defaultChildrenStackBuilder,
   }) {
     return Reflection(
       sliderList: sliderList,
@@ -1132,6 +1136,11 @@ class CarouselCustomSlider extends StatefulWidget {
       childrenStackBuilder: childrenStackBuilder,
     );
   }
+
+  static Widget defaultChildrenStackBuilder(int index) =>
+      const SizedBox.shrink();
+
+  static List<Widget> defaultChildrenStackBuilders(int index) => [];
 
   @override
   State<CarouselCustomSlider> createState() => _CarouselCustomSliderState();

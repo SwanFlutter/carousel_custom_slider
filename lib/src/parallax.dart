@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_key_in_widget_constructors
 import 'dart:ui';
 
+import 'package:carousel_custom_slider/carousel_custom_slider.dart';
 import 'package:carousel_custom_slider/src/widget/custom-card_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -161,7 +162,8 @@ class Parallax extends StatefulWidget {
     this.customCurve = Curves.ease,
     this.directionality = TextDirection.ltr,
     this.filterQuality = FilterQuality.low,
-    this.childrenStackBuilder,
+    this.childrenStackBuilder =
+        CarouselCustomSlider.defaultChildrenStackBuilder,
   });
 
   @override
@@ -200,61 +202,63 @@ class _ParallaxState extends State<Parallax> {
           onTap: widget.onTap,
           onDoubleTap: widget.onDoubleTap,
           onLongPress: widget.onLongPress,
-          child: Container(
-            height: widget.height ?? size.height,
-            width: widget.width ?? size.width,
-            decoration: BoxDecoration(borderRadius: widget.borderRadius),
-            child: Stack(children: [
-              ImageFiltered(
-                imageFilter: ImageFilter.blur(
-                  sigmaX: widget.showBackgroundImage
-                      ? widget.sigmaXBlurBackgroundImage
-                      : 0,
-                  sigmaY: widget.showBackgroundImage
-                      ? widget.sigmaXBlurBackgroundImage
-                      : 0,
-                ),
-                child: Container(
-                  width: size.width,
-                  height: size.height,
-                  decoration: widget.showBackgroundImage
-                      ? BoxDecoration(
-                          image: DecorationImage(
-                            image: Image.network(
-                              widget.imageUrl[_currentPage],
-                              cacheHeight: widget.cacheHeight,
-                              cacheWidth: widget.cacheWidth,
-                              errorBuilder: widget.errorBuilder,
-                            ).image,
-                            fit: BoxFit.fitHeight,
+          child: Expanded(
+            child: Container(
+              height: widget.height ?? size.height,
+              width: widget.width ?? size.width,
+              decoration: BoxDecoration(borderRadius: widget.borderRadius),
+              child: Stack(children: [
+                ImageFiltered(
+                  imageFilter: ImageFilter.blur(
+                    sigmaX: widget.showBackgroundImage
+                        ? widget.sigmaXBlurBackgroundImage
+                        : 0,
+                    sigmaY: widget.showBackgroundImage
+                        ? widget.sigmaXBlurBackgroundImage
+                        : 0,
+                  ),
+                  child: Container(
+                    width: size.width,
+                    height: size.height,
+                    decoration: widget.showBackgroundImage
+                        ? BoxDecoration(
+                            image: DecorationImage(
+                              image: Image.network(
+                                widget.imageUrl[_currentPage],
+                                cacheHeight: widget.cacheHeight,
+                                cacheWidth: widget.cacheWidth,
+                                errorBuilder: widget.errorBuilder,
+                              ).image,
+                              fit: BoxFit.fitHeight,
+                            ),
+                          )
+                        : BoxDecoration(
+                            color: widget.backgroundColor,
                           ),
-                        )
-                      : BoxDecoration(
-                          color: widget.backgroundColor,
-                        ),
+                  ),
                 ),
-              ),
-              PageView.builder(
-                physics: const BouncingScrollPhysics(),
-                controller: _pageController,
-                itemCount: widget.imageUrl.length,
-                onPageChanged: (val) {
-                  setState(() {
-                    _currentPage = val;
-                  });
-                },
-                itemBuilder: (context, index) {
-                  return AnimatedSwitcher(
-                    duration: widget.duration,
-                    child: CustomCardWidget(
-                      widget: widget,
-                      index: index,
-                      pageController: _pageController,
-                    ),
-                  );
-                },
-              ),
-            ]),
+                PageView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  controller: _pageController,
+                  itemCount: widget.imageUrl.length,
+                  onPageChanged: (val) {
+                    setState(() {
+                      _currentPage = val;
+                    });
+                  },
+                  itemBuilder: (context, index) {
+                    return AnimatedSwitcher(
+                      duration: widget.duration,
+                      child: CustomCardWidget(
+                        widget: widget,
+                        index: index,
+                        pageController: _pageController,
+                      ),
+                    );
+                  },
+                ),
+              ]),
+            ),
           ),
         ),
       ),

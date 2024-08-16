@@ -161,7 +161,9 @@ class _AdvancedCarouselSliderState extends State<AdvancedCarouselSlider> {
   void initState() {
     _currentPage = widget.initialPage;
     _controller = PageController(
-        viewportFraction: widget.viewportFraction, initialPage: _currentPage);
+      viewportFraction: widget.viewportFraction,
+      initialPage: _currentPage,
+    );
     super.initState();
   }
 

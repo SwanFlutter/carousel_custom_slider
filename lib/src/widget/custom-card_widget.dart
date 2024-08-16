@@ -102,7 +102,8 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                   ),
                 ),
               ),
-              widget.widget.childrenStackBuilder!(widget.index),
+              if (widget.widget.childrenStackBuilder != null)
+                widget.widget.childrenStackBuilder!(widget.index),
             ],
           ),
         ),

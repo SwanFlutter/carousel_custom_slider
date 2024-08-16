@@ -505,7 +505,7 @@ CarouselCustomSlider.transFormedCardSlider(
 
 ```yaml
 dependencies:
-  carousel_custom_slider: ^0.0.7+2
+  carousel_custom_slider: ^0.0.7+3
 ```
 
 ## How to use
