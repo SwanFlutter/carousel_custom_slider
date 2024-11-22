@@ -54,16 +54,13 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
 
         if (widget.pageController.position.haveDimensions) {
           value = widget.pageController.page! - widget.index;
-          value = (1 - (value.abs() * widget.widget.valueScalingFactor))
-              .clamp(0.0, 1.0);
+          value = (1 - (value.abs() * widget.widget.valueScalingFactor)).clamp(0.0, 1.0);
         }
 
         return Center(
           child: SizedBox(
-            height: widget.widget.customCurve.transform(value) *
-                widget.widget.dynamicHeight,
-            width: Curves.easeInOutBack.transform(value) *
-                widget.widget.horizontalTransform,
+            height: widget.widget.customCurve.transform(value) * widget.widget.dynamicHeight,
+            width: widget.widget.customCurve.transform(value) * widget.widget.horizontalTransform,
             child: child,
           ),
         );
@@ -102,8 +99,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                   ),
                 ),
               ),
-              if (widget.widget.childrenStackBuilder != null)
-                widget.widget.childrenStackBuilder!(widget.index),
+              if (widget.widget.childrenStackBuilder != null) widget.widget.childrenStackBuilder!(widget.index),
             ],
           ),
         ),

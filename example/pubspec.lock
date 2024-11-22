@@ -20,11 +20,10 @@ packages:
   carousel_custom_slider:
     dependency: "direct main"
     description:
-      name: carousel_custom_slider
-      sha256: "3f2b2d408e3d0a1c4f6b7150115aa5d98295fef469da171932f3bce6babb9f74"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.7+1"
+      path: ".."
+      relative: true
+    source: path
+    version: "0.0.7+3"
   characters:
     dependency: transitive
     description:
@@ -220,10 +219,10 @@ packages:
     dependency: transitive
     description:
       name: vm_service
-      sha256: f652077d0bdf60abe4c1f6377448e8655008eef28f128bc023f7b5e8dfeb48fc
+      sha256: "5c5f338a667b4c644744b661f309fb8080bb94b18a7e91ef1dbd343bed00ed6d"
       url: "https://pub.dev"
     source: hosted
-    version: "14.2.4"
+    version: "14.2.5"
   zoom_hover_pinch_image:
     dependency: transitive
     description:

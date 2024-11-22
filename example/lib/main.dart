@@ -1,8 +1,7 @@
 import 'package:carousel/constant.dart';
-import 'package:carousel/transforom_card.dart';
+import 'package:carousel/new.dart';
 import 'package:carousel_custom_slider/carousel_custom_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,85 +33,88 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: SizedBox(
-        width: size.width,
-        height: size.height,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              CarouselCustomSlider(
-                doubleTapZoom: true,
-                clipBehaviorZoom: true,
-                autoPlay: false,
-                height: 155,
-                sliderList: sliderListImage,
-              ),
-              Container(
-                height: 15,
-                width: size.width,
-                color: Theme.of(context).colorScheme.primaryContainer,
-              ),
-              CarouselCustomSlider(
-                viewportFraction: 0.3,
-                height: 150,
-                sliderList: imageUrls,
-                effect: JumpingDotEffect(
-                  jumpScale: 2,
-                  paintStyle: PaintingStyle.stroke,
-                  dotHeight: 10,
-                  dotWidth: 10,
-                  dotColor: Theme.of(context).colorScheme.primaryContainer,
-                  activeDotColor: Colors.deepOrangeAccent,
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: size.width,
+          height: size.height,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                CarouselCustomSlider(
+                  doubleTapZoom: true,
+                  clipBehaviorZoom: true,
+                  autoPlay: false,
+                  height: 150,
+                  sliderList: sliderListImage,
                 ),
-              ),
-              Container(
-                height: 15,
-                width: size.width,
-                color: Theme.of(context).colorScheme.primaryContainer,
-              ),
-              CarouselCustomSlider(
-                fitPic: BoxFit.fitWidth,
-                backgroundColor: Colors.pink,
-                autoPlayCurve: Curves.bounceInOut,
-                alignmentPositionIndicator: Alignment.topCenter,
-                viewportFraction: 0.8,
-                viewportFractionPaddingHorizontal: 15.0,
-                height: 150,
-                sliderList: imageUrls,
-                effect: const WormEffect(
-                  type: WormType.thinUnderground,
-                  paintStyle: PaintingStyle.stroke,
-                  dotHeight: 10,
-                  dotWidth: 10,
-                  dotColor: Colors.pink,
-                  activeDotColor: Colors.purple,
+                Container(
+                  height: 15,
+                  width: size.width,
+                  color: Theme.of(context).colorScheme.primaryContainer,
                 ),
-              ),
-              Container(
-                height: 15,
-                width: size.width,
-                color: Theme.of(context).colorScheme.primaryContainer,
-              ),
-              CarouselCustomSlider(
-                autoPlay: false,
-                alignmentPositionIndicator: Alignment.bottomCenter,
-                viewportFraction: 0.8,
-                scrollDirection: Axis.vertical,
-                viewportFractionPaddingVertical: 27.0,
-                height: 270,
-                sliderList: imageUrls,
-                effect: const ExpandingDotsEffect(
-                  paintStyle: PaintingStyle.fill,
-                  dotHeight: 6,
-                  dotWidth: 6,
-                  dotColor: Colors.greenAccent,
-                  activeDotColor: Colors.green,
+                CarouselCustomSlider(
+                  viewportFraction: 0.3,
+                  height: 150,
+                  sliderList: imageUrls,
+                  fitPic: BoxFit.fitHeight,
+                  effect: JumpingDotEffect(
+                    jumpScale: 2,
+                    paintStyle: PaintingStyle.stroke,
+                    dotHeight: 10,
+                    dotWidth: 10,
+                    dotColor: Theme.of(context).colorScheme.primaryContainer,
+                    activeDotColor: Colors.deepOrangeAccent,
+                  ),
                 ),
-              ),
+                Container(
+                  height: 15,
+                  width: size.width,
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                ),
+                CarouselCustomSlider(
+                  fitPic: BoxFit.fitWidth,
+                  backgroundColor: Colors.pink,
+                  autoPlayCurve: Curves.bounceInOut,
+                  alignmentPositionIndicator: Alignment.topCenter,
+                  viewportFraction: 0.8,
+                  viewportFractionPaddingHorizontal: 15.0,
+                  height: 150,
+                  sliderList: imageUrls,
+                  effect: const WormEffect(
+                    type: WormType.thinUnderground,
+                    paintStyle: PaintingStyle.stroke,
+                    dotHeight: 10,
+                    dotWidth: 10,
+                    dotColor: Colors.pink,
+                    activeDotColor: Colors.purple,
+                  ),
+                ),
+                Container(
+                  height: 15,
+                  width: size.width,
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                ),
+                CarouselCustomSlider(
+                  autoPlay: false,
+                  alignmentPositionIndicator: Alignment.bottomCenter,
+                  viewportFraction: 0.8,
+                  scrollDirection: Axis.vertical,
+                  viewportFractionPaddingVertical: 27.0,
+                  height: 270,
+                  sliderList: imageUrls,
+                  effect: const ExpandingDotsEffect(
+                    paintStyle: PaintingStyle.fill,
+                    dotHeight: 6,
+                    dotWidth: 6,
+                    dotColor: Colors.greenAccent,
+                    activeDotColor: Colors.green,
+                  ),
+                ),
 
-              //paralax
-              const SizedBox(height: 30),
-            ],
+                //paralax
+                const SizedBox(height: 30),
+              ],
+            ),
           ),
         ),
       ),
@@ -122,7 +124,7 @@ class Home extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const Transformcard(),
+              builder: (context) => const NewWidget(),
             ),
           );
         },

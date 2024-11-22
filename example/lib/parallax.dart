@@ -26,16 +26,16 @@ class Parallax extends StatelessWidget {
           valueScalingFactor: 0.4,
           viewportFraction: 0.8,
           dynamicHeight: 600,
-          children: [
-            const Positioned(
+          childrenStackBuilder: (index) {
+            return const Positioned(
               left: 25,
               bottom: 25.0,
               child: Text(
                 'Parallax',
                 style: TextStyle(color: Colors.white, fontSize: 30.0),
               ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );

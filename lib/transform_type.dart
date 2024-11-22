@@ -8,5 +8,12 @@ enum TransformType {
   rotation,
   tryInvert,
   diagonal3Values,
-  identity
+  identity,
+}
+
+enum AnimatedBuilderType {
+  normalScale,
+  buildCustom,
+  scale,
+  zoomScale,
 }

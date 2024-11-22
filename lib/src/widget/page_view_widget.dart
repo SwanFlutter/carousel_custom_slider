@@ -28,50 +28,50 @@ class PageViewWidget extends StatelessWidget {
           doubleTapZoom: widget.doubleTapZoom,
           oneTapZoom: true, // Change oneTapZoom to true
           clipBehavior: widget.clipBehaviorZoom,
-          child: Image.network(
-            widget.sliderList[index],
+          child: Container(
             width: widget.width,
             height: widget.height,
-            fit: widget.fitPic,
-            errorBuilder: (context, url, error) => Center(
-              child: Icon(
-                Icons.image_not_supported_outlined,
-                color: Theme.of(context).primaryColor,
-                size: 30.0,
-              ),
-            ),
-            loadingBuilder: (BuildContext context, Widget child,
-                ImageChunkEvent? loadingProgress) {
-              if (loadingProgress != null &&
-                  loadingProgress.expectedTotalBytes != null) {
-                double progress = (loadingProgress.cumulativeBytesLoaded /
-                        loadingProgress.expectedTotalBytes!) *
-                    25; // Calculate percentage (0-100)
-                // Calculate blur based on progress (higher progress = less blur)
-                blurValue = 25 - progress;
-              }
-              return ImageFiltered(
-                imageFilter:
-                    ImageFilter.blur(sigmaX: blurValue, sigmaY: blurValue),
-                child: Image.network(
-                  widget.sliderList[index],
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  height: double.infinity,
-                  fit: widget.fitPic,
-                  errorBuilder: (context, error, stackTrace) => Center(
-                    child: Icon(
-                      Icons.image_not_supported_outlined,
-                      color: Theme.of(context).primaryColor,
-                      size: 30.0,
-                    ),
-                  ),
+            color: Colors.grey.shade200,
+            child: Image.network(
+              widget.sliderList[index],
+              width: widget.width,
+              height: widget.height,
+              fit: widget.fitPic,
+              cacheHeight: 300,
+              cacheWidth: 300,
+              errorBuilder: (context, url, error) => Center(
+                child: Icon(
+                  Icons.image_not_supported_outlined,
+                  color: Theme.of(context).primaryColor,
+                  size: 30.0,
                 ),
-              );
-            },
+              ),
+              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                if (loadingProgress != null && loadingProgress.expectedTotalBytes != null) {
+                  double progress = (loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!) * 25; // Calculate percentage (0-100)
+                  // Calculate blur based on progress (higher progress = less blur)
+                  blurValue = 25 - progress;
+                }
+                return ImageFiltered(
+                  imageFilter: ImageFilter.blur(sigmaX: blurValue, sigmaY: blurValue),
+                  child: Image.network(
+                    widget.sliderList[index],
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: widget.height,
+                    fit: widget.fitPic,
+                    errorBuilder: (context, error, stackTrace) => Center(
+                        child: Image.asset(
+                      "assets/placeholder.png",
+                      width: MediaQuery.of(context).size.width * 0.60,
+                      height: MediaQuery.of(context).size.width * 0.60,
+                    )),
+                  ),
+                );
+              },
+            ),
           ),
         ),
-        if (widget.childrenStackBuilder != null)
-          widget.childrenStackBuilder!(index),
+        if (widget.childrenStackBuilder != null) widget.childrenStackBuilder!(index),
       ],
     );
   }

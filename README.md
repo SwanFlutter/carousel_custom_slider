@@ -49,7 +49,33 @@ childrenStackBuilder: (index) {
   ),
 ```
 
-- new
+
+
+- new 
+
+
+
+```dart
+CarouselCustomSlider(
+ animatedBuilderSettings: AnimatedBuilderSettings(
+  animatedBuilderType: AnimatedBuilderType.normalScale,
+    useAnimatedBuilder: true,
+      ),
+      backgroundColor: Colors.blueAccent.shade100,
+      doubleTapZoom: true,
+       clipBehaviorZoom: true,
+       autoPlay: true,
+          height: 350,
+            viewportFraction: 0.25,
+          initialPage: 3,
+        sliderList: img,
+      viewportFractionPaddingHorizontal: 5,
+    viewportFractionPaddingVertical: 5,
+  autoPlayCurve: Curves.ease,
+),
+```
+
+
 
 ![carousel](https://github.com/user-attachments/assets/b3cea922-61e6-498f-9be2-2857b9daf6cf)
 
@@ -114,7 +140,7 @@ CarouselCustomSlider.advancedCarouselSlider(
               ];
 ```
 
-- New 
+
 
 Reflection baner you can use web, windows, mac, linux.
 

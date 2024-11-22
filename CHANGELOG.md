@@ -40,3 +40,13 @@
 ## 0.0.7+3
 
 * Fix bug.
+
+## 0.0.7+3
+
+* Add new feature.
+
+```dart animatedBuilderSettings: AnimatedBuilderSettings(
+                animatedBuilderType: AnimatedBuilderType.normalScale,
+                useAnimatedBuilder: true,
+ ),
+ ```
