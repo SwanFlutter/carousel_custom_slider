@@ -46,14 +46,19 @@ class PageViewWidget extends StatelessWidget {
                   size: 30.0,
                 ),
               ),
-              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                if (loadingProgress != null && loadingProgress.expectedTotalBytes != null) {
-                  double progress = (loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!) * 25; // Calculate percentage (0-100)
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress != null &&
+                    loadingProgress.expectedTotalBytes != null) {
+                  double progress = (loadingProgress.cumulativeBytesLoaded /
+                          loadingProgress.expectedTotalBytes!) *
+                      25; // Calculate percentage (0-100)
                   // Calculate blur based on progress (higher progress = less blur)
                   blurValue = 25 - progress;
                 }
                 return ImageFiltered(
-                  imageFilter: ImageFilter.blur(sigmaX: blurValue, sigmaY: blurValue),
+                  imageFilter:
+                      ImageFilter.blur(sigmaX: blurValue, sigmaY: blurValue),
                   child: Image.network(
                     widget.sliderList[index],
                     width: MediaQuery.of(context).size.width * 0.8,
@@ -71,7 +76,8 @@ class PageViewWidget extends StatelessWidget {
             ),
           ),
         ),
-        if (widget.childrenStackBuilder != null) widget.childrenStackBuilder!(index),
+        if (widget.childrenStackBuilder != null)
+          widget.childrenStackBuilder!(index),
       ],
     );
   }

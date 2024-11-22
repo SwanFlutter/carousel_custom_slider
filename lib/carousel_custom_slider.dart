@@ -217,7 +217,8 @@ class CarouselCustomSlider extends StatefulWidget {
     this.clipBehaviorZoom = false,
     this.fitPic = BoxFit.cover,
     this.alignmentVerticalPositionIndicator = Alignment.centerLeft,
-    this.paddingVerticalPositionIndicator = const EdgeInsets.symmetric(horizontal: 15.0),
+    this.paddingVerticalPositionIndicator =
+        const EdgeInsets.symmetric(horizontal: 15.0),
     this.borderRadius = BorderRadius.zero,
     this.animatedBuilderSettings,
     this.effect = const SlideEffect(
@@ -261,7 +262,8 @@ class CarouselCustomSlider extends StatefulWidget {
     final String? restorationId,
     final ScrollBehavior? scrollBehavior,
     final bool autoPlay = true,
-    final Widget Function(BuildContext, Object, StackTrace?)? errorBuilderBackgroundImage,
+    final Widget Function(BuildContext, Object, StackTrace?)?
+        errorBuilderBackgroundImage,
   }) {
     return AutoScrollingWheel(
       autoPlay: autoPlay,
@@ -416,7 +418,8 @@ class CarouselCustomSlider extends StatefulWidget {
     /// A builder function that returns a widget to display on top of each slide.
     ///
     /// The function receives the index of the current slide and returns a widget.
-    final Widget Function(int index)? childrenStackBuilder = defaultChildrenStackBuilder,
+    final Widget Function(int index)? childrenStackBuilder =
+        defaultChildrenStackBuilder,
   }) {
     return Parallax(
       imageUrl: imageUrl,
@@ -744,7 +747,8 @@ class CarouselCustomSlider extends StatefulWidget {
     /// A builder function that returns a widget to display on top of each slide.
     ///
     /// The function receives the index of the current slide and returns a widget.
-    final List<Widget> Function(int index)? childrenStackBuilder = defaultChildrenStackBuilders,
+    final List<Widget> Function(int index)? childrenStackBuilder =
+        defaultChildrenStackBuilders,
   }) {
     return TransformedCardSlider(
       imageUrl: imageUrl,
@@ -873,7 +877,8 @@ class CarouselCustomSlider extends StatefulWidget {
     /// A builder function that returns a widget to display on top of each slide.
     ///
     /// The function receives the index of the current slide and returns a widget.
-    final Widget Function(int index)? childrenStackBuilder = defaultChildrenStackBuilder,
+    final Widget Function(int index)? childrenStackBuilder =
+        defaultChildrenStackBuilder,
   }) {
     return Transformed3DCardlider(
       imageUrl: imageUrl,
@@ -974,7 +979,8 @@ class CarouselCustomSlider extends StatefulWidget {
     /// A builder function that returns a widget to display on top of each slide.
     ///
     /// The function receives the index of the current slide and returns a widget.
-    final Widget? Function(int index)? childrenStackBuilder = AdvancedCarouselSlider.defaultChildrenStackBuilder,
+    final Widget? Function(int index)? childrenStackBuilder =
+        AdvancedCarouselSlider.defaultChildrenStackBuilder,
   }) {
     return Reflection(
       sliderList: sliderList,
@@ -1111,7 +1117,8 @@ class CarouselCustomSlider extends StatefulWidget {
     /// A builder function that returns a widget to display on top of each slide.
     ///
     /// The function receives the index of the current slide and returns a widget.
-    final Widget? Function(int index) childrenStackBuilder = AdvancedCarouselSlider.defaultChildrenStackBuilder,
+    final Widget? Function(int index) childrenStackBuilder =
+        AdvancedCarouselSlider.defaultChildrenStackBuilder,
   }) {
     return AdvancedCarouselSlider(
       slides: slides,
@@ -1136,7 +1143,8 @@ class CarouselCustomSlider extends StatefulWidget {
     );
   }
 
-  static Widget defaultChildrenStackBuilder(int index) => const SizedBox.shrink();
+  static Widget defaultChildrenStackBuilder(int index) =>
+      const SizedBox.shrink();
 
   static List<Widget> defaultChildrenStackBuilders(int index) => [];
 
@@ -1164,7 +1172,9 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
     if (widget.autoPlay) {
       _timer = Timer.periodic(widget.autoplayDuration, (timer) {
         if (_pageController.hasClients) {
-          int nextPage = _isReversing ? _pageController.page!.toInt() - 1 : _pageController.page!.toInt() + 1;
+          int nextPage = _isReversing
+              ? _pageController.page!.toInt() - 1
+              : _pageController.page!.toInt() + 1;
 
           // Check bounds and reverse direction if needed
           if (nextPage >= widget.sliderList.length) {
@@ -1222,7 +1232,8 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
         index: index,
       ),
     );
-    if (widget.animatedBuilderSettings?.animatedBuilderType == AnimatedBuilderType.buildCustom) {
+    if (widget.animatedBuilderSettings?.animatedBuilderType ==
+        AnimatedBuilderType.buildCustom) {
       _startAutoPlayBuildCustom();
     } else {
       startTimer();
@@ -1258,13 +1269,20 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
             itemCount: widget.sliderList.length,
             itemBuilder: (context, index) {
               if (widget.animatedBuilderSettings?.useAnimatedBuilder ?? false) {
-                if (widget.animatedBuilderSettings?.animatedBuilderType == AnimatedBuilderType.buildCustom) {
+                if (widget.animatedBuilderSettings?.animatedBuilderType ==
+                    AnimatedBuilderType.buildCustom) {
                   return _buildCustom(index);
-                } else if (widget.animatedBuilderSettings?.animatedBuilderType == AnimatedBuilderType.normalScale) {
+                } else if (widget
+                        .animatedBuilderSettings?.animatedBuilderType ==
+                    AnimatedBuilderType.normalScale) {
                   return _normalScale(index);
-                } else if (widget.animatedBuilderSettings?.animatedBuilderType == AnimatedBuilderType.scale) {
+                } else if (widget
+                        .animatedBuilderSettings?.animatedBuilderType ==
+                    AnimatedBuilderType.scale) {
                   return _scale(_pageController, index);
-                } else if (widget.animatedBuilderSettings?.animatedBuilderType == AnimatedBuilderType.zoomScale) {
+                } else if (widget
+                        .animatedBuilderSettings?.animatedBuilderType ==
+                    AnimatedBuilderType.zoomScale) {
                   return _zoomScale(_pageController, index);
                 } else {
                   return _buildPageItem(index);
@@ -1337,8 +1355,12 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
   Widget _buildPageItemnormal(int index) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: widget.viewportFractionPaddingHorizontal.isNaN ? 0 : widget.viewportFractionPaddingHorizontal,
-        vertical: widget.viewportFractionPaddingVertical.isNaN ? 0 : widget.viewportFractionPaddingVertical,
+        horizontal: widget.viewportFractionPaddingHorizontal.isNaN
+            ? 0
+            : widget.viewportFractionPaddingHorizontal,
+        vertical: widget.viewportFractionPaddingVertical.isNaN
+            ? 0
+            : widget.viewportFractionPaddingVertical,
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
@@ -1354,7 +1376,8 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
         animation: _pageController,
         builder: (context, child) {
           double value = 1.0; // مقدار پیش‌فرض
-          if (_pageController.position.haveDimensions && _pageController.page != null) {
+          if (_pageController.position.haveDimensions &&
+              _pageController.page != null) {
             value = _pageController.page! - index;
             value = (1 - (value.abs() * 0.3)).clamp(0.0, 1.0);
           } else {
@@ -1362,13 +1385,18 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
           }
 
           // کنترل مقدار پیش‌فرض برای ارتفاع و عرض
-          final double widgetHeight = widget.height.isNaN ? 200.0 : widget.height;
+          final double widgetHeight =
+              widget.height.isNaN ? 200.0 : widget.height;
           final double widgetWidth = widget.width.isNaN ? 200.0 : widget.width;
 
           return Center(
             child: SizedBox(
-              height: Curves.easeInOut.transform(value).isNaN ? widgetHeight : Curves.easeInOut.transform(value) * widgetHeight,
-              width: Curves.easeInOut.transform(value).isNaN ? widgetWidth : Curves.easeInOut.transform(value) * widgetWidth,
+              height: Curves.easeInOut.transform(value).isNaN
+                  ? widgetHeight
+                  : Curves.easeInOut.transform(value) * widgetHeight,
+              width: Curves.easeInOut.transform(value).isNaN
+                  ? widgetWidth
+                  : Curves.easeInOut.transform(value) * widgetWidth,
               child: child,
             ),
           );
@@ -1391,7 +1419,8 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
           value = (1 - (value.abs() * 0.3)).clamp(0.0, 1.0);
         }
         return Transform.scale(
-          scale: widget.animatedBuilderSettings?.curveForscale!.transform(value),
+          scale:
+              widget.animatedBuilderSettings?.curveForscale!.transform(value),
           child: Transform.translate(
             offset: Offset(0, (1 - value) * 25), // افزایش ارتفاع آیتم فعال
             child: _buildPageItem(index),
@@ -1414,10 +1443,13 @@ class _CarouselCustomSliderState extends State<CarouselCustomSlider> {
         double scale = 1.0;
         double translate = 0.0;
         if (value > 0.5) {
-          scale = 1 + (value - 0.5) * 0.4; // Увеличиваем масштаб для центрального элемента
+          scale = 1 +
+              (value - 0.5) *
+                  0.4; // Увеличиваем масштаб для центрального элемента
           translate = (value - 0.5) * 50; // Поднимаем центральный элемент
         } else if (value > 0) {
-          scale = 0.8 + value * 0.4; // Плавно увеличиваем масштаб для соседних элементов
+          scale = 0.8 +
+              value * 0.4; // Плавно увеличиваем масштаб для соседних элементов
         } else {
           scale = 0.8; // Минимальный масштаб для дальних элементов
         }
