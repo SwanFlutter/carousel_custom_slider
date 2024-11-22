@@ -41,12 +41,10 @@
 
 * Fix bug.
 
-## 0.0.7+3
-
-* Add new feature.
-
-```dart animatedBuilderSettings: AnimatedBuilderSettings(
-                animatedBuilderType: AnimatedBuilderType.normalScale,
-                useAnimatedBuilder: true,
- ),
- ```
+## 0.0.8
+* Add `animatedBuilderSettings` feature to allow customization of animated builder types:
+  ```dart
+  animatedBuilderSettings: AnimatedBuilderSettings(
+    animatedBuilderType: AnimatedBuilderType.normalScale,
+    useAnimatedBuilder: true,
+  )```
