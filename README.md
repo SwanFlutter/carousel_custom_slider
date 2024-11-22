@@ -55,6 +55,23 @@ childrenStackBuilder: (index) {
 
 
 
+https://github.com/user-attachments/assets/87345dfc-7b3d-48e8-8c22-a9a735ca2ebb
+
+
+
+https://github.com/user-attachments/assets/3fe1a666-8e7e-40f9-842d-b52dfc23d847
+
+
+
+https://github.com/user-attachments/assets/5bcdae52-4cf5-4e0a-a734-5ddc9454ced7
+
+
+
+https://github.com/user-attachments/assets/21d3da6a-61fe-4a47-aebd-2bdeb55ba9aa
+
+
+
+
 ```dart
 CarouselCustomSlider(
  animatedBuilderSettings: AnimatedBuilderSettings(
