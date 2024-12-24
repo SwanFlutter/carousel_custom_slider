@@ -215,8 +215,8 @@ class _AdvancedCarouselSliderState extends State<AdvancedCarouselSlider> {
                             fit: widget.fit,
                             colorFilter: widget.colorFilter ??
                                 ColorFilter.mode(
-                                  Colors.black
-                                      .withOpacity(isCurrentPage ? 0.3 : 0.9),
+                                  Colors.black.withValues(
+                                      alpha: isCurrentPage ? 0.3 : 0.9),
                                   BlendMode.xor,
                                 ),
                           ),

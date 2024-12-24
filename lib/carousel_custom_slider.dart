@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-library carousel_custom_slider;
+library;
 
 import 'dart:async';
 
