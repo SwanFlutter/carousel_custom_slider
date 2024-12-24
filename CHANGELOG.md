@@ -48,3 +48,8 @@
     animatedBuilderType: AnimatedBuilderType.normalScale,
     useAnimatedBuilder: true,
   )```
+
+  ## 0.0.9
+
+* Fix pub point.
+* Update package.
