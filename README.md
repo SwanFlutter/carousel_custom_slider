@@ -82,6 +82,33 @@ CarouselCustomSlider.carousel3D(
 
 ---
 
+## 🆕 CoverflowCarousel
+
+A Cover Flow effect carousel with 3D Y-axis rotation and scale. Cards fan out on either side of the active card, giving a realistic depth feel. Tap a side card to navigate to it.
+
+```dart
+CarouselCustomSlider.coverflowCarousel(
+  items: [
+    CoverflowItem(src: 'https://i.pravatar.cc/300?img=1', title: 'urban exploration'),
+    CoverflowItem(src: 'https://i.pravatar.cc/300?img=2', title: 'night scene'),
+    CoverflowItem(src: 'https://i.pravatar.cc/300?img=3', title: 'yellow wildflowers'),
+    CoverflowItem(src: 'https://i.pravatar.cc/300?img=4', title: 'street with mount fuji'),
+    CoverflowItem(src: 'https://i.pravatar.cc/300?img=5', title: 'bridgestone bicycle shop'),
+    CoverflowItem(src: 'https://i.pravatar.cc/300?img=6', title: 'train window view'),
+  ],
+  cardWidth: 200,
+  cardAspectRatio: 3 / 4,
+  rotationDegrees: 55,
+  inactiveScale: 0.82,
+  overlapFactor: 0.52,
+  animationDuration: Duration(milliseconds: 450),
+  animationCurve: Curves.easeOutCubic,
+  onIndexChanged: (i) => print('active: $i'),
+)
+```
+
+---
+
 ![20240418_081900](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/e8d7b540-7e35-45b7-880b-1116255b6347)![20240418_081732](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/46e38714-27f2-4813-b542-ce0a07062e79)
 
 ![20240419_094517](https://github.com/SwanFlutter/carousel_custom_slider/assets/151648897/e3267854-06ff-4b93-b871-d572cda09a4c)
