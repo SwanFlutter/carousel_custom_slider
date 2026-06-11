@@ -46,6 +46,9 @@ CarouselCustomSlider.wheelGallery(
 )
 ```
 
+<img width="350" height="198" alt="WheelGallery" src="https://github.com/user-attachments/assets/245c3c55-6382-4ec0-9abd-d250ab3bbe81" />
+
+
 ---
 
 ## 🆕 Carousel3D
@@ -80,6 +83,9 @@ CarouselCustomSlider.carousel3D(
 )
 ```
 
+<img width="400" height="224" alt="20260610_230706" src="https://github.com/user-attachments/assets/7a914469-f4b5-47e6-930d-5a75b899e763" />
+
+
 ---
 
 ## 🆕 CoverflowCarousel
@@ -106,6 +112,9 @@ CarouselCustomSlider.coverflowCarousel(
   onIndexChanged: (i) => print('active: $i'),
 )
 ```
+
+<img width="400" height="226" alt="20260610_230740" src="https://github.com/user-attachments/assets/22b2c275-0451-4f08-9228-ce9147f81d48" />
+
 
 ---
 
