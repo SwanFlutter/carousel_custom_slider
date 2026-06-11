@@ -1,0 +1,29 @@
+name: carousel_custom_slider
+description: "This is a simple slider package, you can put the position of the indicator and text on it and personalize it."
+version: 0.2.0
+homepage: 'https://github.com/SwanFlutter/carousel_custom_slider'
+repository: 'https://github.com/SwanFlutter/carousel_custom_slider'
+
+environment:
+  sdk: ^3.12.1
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  smooth_page_indicator: ^2.0.1
+  zoom_hover_pinch_image: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # To add assets to your package, add an assets section, like this:
+  assets:
+      - assets/
+ 
