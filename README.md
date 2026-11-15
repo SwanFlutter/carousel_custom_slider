@@ -1,10 +1,22 @@
 # carousel_custom_slider
 
-[![Pub Points](https://img.shields.io/pub/points/carousel_custom_slider)](https://pub.dev/packages/carousel_custom_slider/score)
-[![Popularity](https://img.shields.io/pub/popularity/carousel_custom_slider)](https://pub.dev/packages/carousel_custom_slider)
-[![Pub Likes](https://img.shields.io/pub/likes/carousel_custom_slider)](https://pub.dev/packages/carousel_custom_slider)
-[![GitHub issues](https://img.shields.io/github/issues/SwanFlutter/carousel_custom_slider)](https://github.com/SwanFlutter/carousel_custom_slider/issues)
-[![GitHub forks](https://img.shields.io/github/forks/SwanFlutter/carousel_custom_slider)](https://github.com/SwanFlutter/carousel_custom_slider/network/members)
+[![pub version](https://img.shields.io/pub/v/carousel_custom_slider.svg?logo=flutter&color=02569B)](https://pub.dev/packages/carousel_custom_slider)
+[![pub points](https://img.shields.io/pub/points/carousel_custom_slider?color=2E8B57&label=pub%20points&logo=flutter)](https://pub.dev/packages/carousel_custom_slider/score)
+[![pub likes](https://img.shields.io/pub/likes/carousel_custom_slider?color=FFD700&logo=heart)](https://pub.dev/packages/carousel_custom_slider/score)
+[![pub downloads](https://img.shields.io/pub/dm/carousel_custom_slider?color=green&label=downloads%2Fmonth&logo=pub)](https://pub.dev/packages/carousel_custom_slider)
+
+[![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20macOS%20%7C%20Windows%20%7C%20Linux%20%7C%20Web-blue.svg?style=flat)](https://github.com/SwanFlutter/carousel_custom_slider)
+[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg?style=flat)](LICENSE)
+[![Dart](https://img.shields.io/badge/Dart-3.4.0+-0078D4.svg?logo=dart)](https://dart.dev/)
+[![Flutter](https://img.shields.io/badge/Flutter-3.44%2B-02569B.svg?logo=flutter)](https://flutter.dev/)
+
+[![GitHub stars](https://img.shields.io/github/stars/SwanFlutter/carousel_custom_slider?color=FFD700&label=stars&logo=github)](https://github.com/SwanFlutter/carousel_custom_slider/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/SwanFlutter/carousel_custom_slider?color=red&logo=github)](https://github.com/SwanFlutter/carousel_custom_slider/issues)
+[![GitHub forks](https://img.shields.io/github/forks/SwanFlutter/carousel_custom_slider?color=4169E1&logo=github)](https://github.com/SwanFlutter/carousel_custom_slider/network/members)
+
+[![code size](https://img.shields.io/github/languages/code-size/SwanFlutter/carousel_custom_slider?color=FF6347&label=code%20size)](https://github.com/SwanFlutter/carousel_custom_slider)
+[![last commit](https://img.shields.io/github/last-commit/SwanFlutter/carousel_custom_slider?color=FF4500&label=last%20commit)](https://github.com/SwanFlutter/carousel_custom_slider/commits/main)
+[![code style](https://img.shields.io/badge/code%20style-flutter_lints-40C4FF.svg?style=flat)](https://pub.dev/packages/flutter_lints)
 
 This is a simple slider package, you can put the position of the indicator and text on it and personalize it.
 
@@ -643,7 +655,7 @@ CarouselCustomSlider.transFormedCardSlider(
 
 ```yaml
 dependencies:
-  carousel_custom_slider: ^0.2.0
+  carousel_custom_slider: ^0.2.1
 ```
 
 ## How to use

@@ -2,6 +2,13 @@
 
 
 
+## 0.2.1
+
+* Update README with comprehensive badges (pub version, pub points, pub likes, pub downloads, Platform, License, Dart, Flutter, GitHub stars, GitHub issues, GitHub forks, code size, last commit, code style).
+* Update CHANGELOG.
+
+---
+
 ## 0.2.0
 
 * **NEW** Add `WheelGallery` widget — scroll-driven circular gallery inspired by CSS scroll-driven animations.
